@@ -48,7 +48,7 @@ export const TITLES_DATA: Title[] = [
     year: 2011,
     synopsis: 'Nove famílias nobres lutam pelo controlo das terras míticas de Westeros, enquanto um antigo inimigo regressa após estar adormecido durante milénios.',
     posterUrl: 'https://picsum.photos/seed/5/500/750',
-    genres: ['Ação', 'Aventura', 'Drama'],
+    genres: ['Ação', 'Aventura', 'Drama', 'Fantasia'],
     imageHint: 'iron throne'
   },
   {
@@ -60,6 +60,956 @@ export const TITLES_DATA: Title[] = [
     posterUrl: 'https://picsum.photos/seed/6/500/750',
     genres: ['Ação', 'Aventura', 'Ficção Científica'],
     imageHint: 'spinning top'
+  },
+  {
+    id: 7,
+    type: 'movie',
+    name: 'O Senhor dos Anéis: A Irmandade do Anel',
+    year: 2001,
+    synopsis: 'Um hobbit tímido da Comarca e oito companheiros partem numa jornada para destruir o poderoso Um Anel e salvar a Terra Média do Lorde das Trevas Sauron.',
+    posterUrl: 'https://picsum.photos/seed/7/500/750',
+    genres: ['Aventura', 'Fantasia', 'Ação'],
+    imageHint: 'fantasy ring'
+  },
+  {
+    id: 8,
+    type: 'movie',
+    name: 'Pulp Fiction',
+    year: 1994,
+    synopsis: 'As vidas de dois assassinos de aluguel, um boxeador, a esposa de um gângster e um par de bandidos de lanchonete se entrelaçam em quatro contos de violência e redenção.',
+    posterUrl: 'https://picsum.photos/seed/8/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'dance scene'
+  },
+  {
+    id: 9,
+    type: 'series',
+    name: 'Stranger Things',
+    year: 2016,
+    synopsis: 'Quando um menino desaparece, sua mãe, um chefe de polícia e seus amigos devem enfrentar forças sobrenaturais aterrorizantes para recuperá-lo.',
+    posterUrl: 'https://picsum.photos/seed/9/500/750',
+    genres: ['Drama', 'Fantasia', 'Terror', 'Mistério'],
+    imageHint: 'upside down'
+  },
+  {
+    id: 10,
+    type: 'movie',
+    name: 'Forrest Gump',
+    year: 1994,
+    synopsis: 'As presidências de Kennedy e Johnson, a Guerra do Vietnã, o escândalo de Watergate e outros eventos históricos se desenrolam da perspectiva de um homem do Alabama com um QI de 75.',
+    posterUrl: 'https://picsum.photos/seed/10/500/750',
+    genres: ['Drama', 'Romance'],
+    imageHint: 'bus bench'
+  },
+  {
+    id: 11,
+    type: 'movie',
+    name: 'Clube da Luta',
+    year: 1999,
+    synopsis: 'Um trabalhador de escritório insone e um fabricante de sabão formam um clube de luta clandestino que evolui para algo muito, muito maior.',
+    posterUrl: 'https://picsum.photos/seed/11/500/750',
+    genres: ['Drama'],
+    imageHint: 'soap bar'
+  },
+  {
+    id: 12,
+    type: 'series',
+    name: 'The Office',
+    year: 2005,
+    synopsis: 'Um documentário simulado sobre um grupo de funcionários de escritório típicos, onde o dia de trabalho consiste em confrontos de ego, comportamento inadequado e tédio.',
+    posterUrl: 'https://picsum.photos/seed/12/500/750',
+    genres: ['Comédia'],
+    imageHint: 'stapler jelly'
+  },
+  {
+    id: 13,
+    type: 'movie',
+    name: 'O Cavaleiro das Trevas',
+    year: 2008,
+    synopsis: 'Quando a ameaça conhecida como o Coringa emerge de seu passado misterioso, ele causa estragos e caos nas pessoas de Gotham.',
+    posterUrl: 'https://picsum.photos/seed/13/500/750',
+    genres: ['Ação', 'Crime', 'Drama'],
+    imageHint: 'joker card'
+  },
+  {
+    id: 14,
+    type: 'movie',
+    name: 'A Lista de Schindler',
+    year: 1993,
+    synopsis: 'Na Polônia ocupada pelos alemães durante a Segunda Guerra Mundial, o industrial Oskar Schindler gradualmente se preocupa com sua força de trabalho judia depois de testemunhar sua perseguição pelos nazistas.',
+    posterUrl: 'https://picsum.photos/seed/14/500/750',
+    genres: ['Biografia', 'Drama', 'História'],
+    imageHint: 'red coat'
+  },
+  {
+    id: 15,
+    type: 'series',
+    name: 'Friends',
+    year: 1994,
+    synopsis: 'Segue a vida pessoal e profissional de seis amigos de 20 a 30 e poucos anos que vivem em Manhattan.',
+    posterUrl: 'https://picsum.photos/seed/15/500/750',
+    genres: ['Comédia', 'Romance'],
+    imageHint: 'orange couch'
+  },
+  {
+    id: 16,
+    type: 'movie',
+    name: 'O Silêncio dos Inocentes',
+    year: 1991,
+    synopsis: 'Uma jovem estagiária do FBI deve receber a ajuda de um assassino canibal manipulador e encarcerado para ajudar a capturar outro serial killer.',
+    posterUrl: 'https://picsum.photos/seed/16/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'moth butterfly'
+  },
+  {
+    id: 17,
+    type: 'movie',
+    name: 'Cidade de Deus',
+    year: 2002,
+    synopsis: 'Nas favelas do Rio, dois meninos que crescem no mesmo ambiente seguem caminhos muito diferentes: um se torna fotógrafo, o outro, traficante.',
+    posterUrl: 'https://picsum.photos/seed/17/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'favela street'
+  },
+  {
+    id: 18,
+    type: 'series',
+    name: 'Chernobyl',
+    year: 2019,
+    synopsis: 'Em abril de 1986, uma explosão na usina nuclear de Chernobyl, na União Soviética, torna-se um dos piores desastres causados pelo homem no mundo.',
+    posterUrl: 'https://picsum.photos/seed/18/500/750',
+    genres: ['Drama', 'História', 'Thriller'],
+    imageHint: 'nuclear plant'
+  },
+  {
+    id: 19,
+    type: 'movie',
+    name: 'Gladiador',
+    year: 2000,
+    synopsis: 'Um ex-general romano se propõe a se vingar do imperador corrupto que assassinou sua família e o mandou para a escravidão.',
+    posterUrl: 'https://picsum.photos/seed/19/500/750',
+    genres: ['Ação', 'Aventura', 'Drama'],
+    imageHint: 'colosseum fight'
+  },
+  {
+    id: 20,
+    type: 'movie',
+    name: 'A Viagem de Chihiro',
+    year: 2001,
+    synopsis: 'Durante a mudança de sua família para o subúrbio, uma menina de 10 anos entra em um mundo governado por deuses, bruxas e espíritos, e onde os humanos são transformados em bestas.',
+    posterUrl: 'https://picsum.photos/seed/20/500/750',
+    genres: ['Animação', 'Aventura', 'Fantasia'],
+    imageHint: 'spirit world'
+  },
+  {
+    id: 21,
+    type: 'series',
+    name: 'Peaky Blinders',
+    year: 2013,
+    synopsis: 'Uma família de gângsteres de Birmingham, Inglaterra, em 1919, centrada em uma gangue que costura lâminas de barbear nas abas de seus bonés e em seu chefe feroz, Tommy Shelby.',
+    posterUrl: 'https://picsum.photos/seed/21/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'flat cap'
+  },
+  {
+    id: 22,
+    type: 'movie',
+    name: 'O Padrinho',
+    year: 1972,
+    synopsis: 'O patriarca idoso de uma dinastia do crime organizado transfere o controle de seu império clandestino para seu filho relutante.',
+    posterUrl: 'https://picsum.photos/seed/22/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'marionette strings'
+  },
+  {
+    id: 23,
+    type: 'movie',
+    name: 'Psicose',
+    year: 1960,
+    synopsis: 'Uma secretária de Phoenix desvia quarenta mil dólares do cliente de seu empregador, foge e faz o check-in em um motel remoto administrado por um jovem sob o domínio de sua mãe.',
+    posterUrl: 'https://picsum.photos/seed/23/500/750',
+    genres: ['Terror', 'Mistério', 'Thriller'],
+    imageHint: 'shower scene'
+  },
+  {
+    id: 24,
+    type: 'series',
+    name: 'Black Mirror',
+    year: 2011,
+    synopsis: 'Uma antologia de ficção científica que explora um futuro distorcido e de alta tecnologia, onde as maiores inovações da humanidade e os instintos mais sombrios colidem.',
+    posterUrl: 'https://picsum.photos/seed/24/500/750',
+    genres: ['Drama', 'Ficção Científica', 'Thriller'],
+    imageHint: 'broken screen'
+  },
+  {
+    id: 25,
+    type: 'movie',
+    name: 'O Iluminado',
+    year: 1980,
+    synopsis: 'Uma família se dirige a um hotel isolado para o inverno, onde uma presença sinistra influencia o pai à violência, enquanto seu filho psíquico tem premonições horríveis do passado e do futuro.',
+    posterUrl: 'https://picsum.photos/seed/25/500/750',
+    genres: ['Drama', 'Terror'],
+    imageHint: 'hotel corridor'
+  },
+  {
+    id: 26,
+    type: 'movie',
+    name: 'De Volta para o Futuro',
+    year: 1985,
+    synopsis: 'Marty McFly, um estudante de 17 anos, é acidentalmente enviado trinta anos no passado em uma máquina do tempo que viaja no tempo inventada por seu amigo cientista.',
+    posterUrl: 'https://picsum.photos/seed/26/500/750',
+    genres: ['Aventura', 'Comédia', 'Ficção Científica'],
+    imageHint: 'time machine'
+  },
+  {
+    id: 27,
+    type: 'series',
+    name: 'The Mandalorian',
+    year: 2019,
+    synopsis: 'As viagens de um caçador de recompensas solitário nos confins da galáxia, longe da autoridade da Nova República.',
+    posterUrl: 'https://picsum.photos/seed/27/500/750',
+    genres: ['Ação', 'Aventura', 'Fantasia'],
+    imageHint: 'bounty hunter'
+  },
+  {
+    id: 28,
+    type: 'movie',
+    name: 'Jurassic Park',
+    year: 1993,
+    synopsis: 'Um paleontólogo pragmático que visita um parque temático quase completo em uma ilha remota é encarregado de proteger um par de crianças depois que uma queda de energia causa o caos com os dinossauros clonados do parque.',
+    posterUrl: 'https://picsum.photos/seed/28/500/750',
+    genres: ['Ação', 'Aventura', 'Ficção Científica'],
+    imageHint: 'dinosaur skeleton'
+  },
+  {
+    id: 29,
+    type: 'movie',
+    name: 'O Rei Leão',
+    year: 1994,
+    synopsis: 'O filhote de leão e futuro rei Simba procura sua identidade. Sua busca é dificultada por seu tio malvado, Scar, que planeja ascender ao trono sozinho.',
+    posterUrl: 'https://picsum.photos/seed/29/500/750',
+    genres: ['Animação', 'Aventura', 'Drama'],
+    imageHint: 'savannah sunrise'
+  },
+  {
+    id: 30,
+    type: 'series',
+    name: 'The Crown',
+    year: 2016,
+    synopsis: 'Segue as rivalidades políticas e o romance do reinado da Rainha Elizabeth II e os eventos que moldaram a segunda metade do século XX.',
+    posterUrl: 'https://picsum.photos/seed/30/500/750',
+    genres: ['Biografia', 'Drama', 'História'],
+    imageHint: 'royal crown'
+  },
+  {
+    id: 31,
+    type: 'movie',
+    name: 'Blade Runner 2049',
+    year: 2017,
+    synopsis: 'O jovem Blade Runner K descobre um segredo há muito enterrado que o leva a encontrar o ex-Blade Runner Rick Deckard, que está desaparecido há 30 anos.',
+    posterUrl: 'https://picsum.photos/seed/31/500/750',
+    genres: ['Ação', 'Drama', 'Mistério'],
+    imageHint: 'futuristic city'
+  },
+  {
+    id: 32,
+    type: 'movie',
+    name: 'Mad Max: Estrada da Fúria',
+    year: 2015,
+    synopsis: 'Em um deserto pós-apocalíptico, uma mulher se rebela contra um governante tirânico em busca de sua terra natal com a ajuda de um grupo de prisioneiras e um vagabundo chamado Max.',
+    posterUrl: 'https://picsum.photos/seed/32/500/750',
+    genres: ['Ação', 'Aventura', 'Ficção Científica'],
+    imageHint: 'desert convoy'
+  },
+  {
+    id: 33,
+    type: 'series',
+    name: 'Westworld',
+    year: 2016,
+    synopsis: 'Em um parque temático futurista do Velho Oeste, os visitantes interagem com "anfitriões" de inteligência artificial, que começam a desenvolver consciência e se rebelar contra seus criadores.',
+    posterUrl: 'https://picsum.photos/seed/33/500/750',
+    genres: ['Drama', 'Mistério', 'Ficção Científica'],
+    imageHint: 'robot cowboy'
+  },
+  {
+    id: 34,
+    type: 'movie',
+    name: 'O Grande Hotel Budapeste',
+    year: 2014,
+    synopsis: 'As aventuras de Gustave H, um lendário concierge de um famoso hotel da república fictícia de Zubrowka entre a primeira e a segunda guerras mundiais, e Zero Moustafa, o lobby boy que se torna seu amigo mais confiável.',
+    posterUrl: 'https://picsum.photos/seed/34/500/750',
+    genres: ['Aventura', 'Comédia', 'Drama'],
+    imageHint: 'pink hotel'
+  },
+  {
+    id: 35,
+    type: 'movie',
+    name: 'Whiplash: Em Busca da Perfeição',
+    year: 2014,
+    synopsis: 'Um jovem e promissor baterista se matricula em um conservatório de música de primeira linha, onde seus sonhos de grandeza são orientados por um instrutor implacável que não vai parar por nada para realizar o potencial de um aluno.',
+    posterUrl: 'https://picsum.photos/seed/35/500/750',
+    genres: ['Drama', 'Música'],
+    imageHint: 'drum set'
+  },
+  {
+    id: 36,
+    type: 'series',
+    name: 'Narcos',
+    year: 2015,
+    synopsis: 'Uma crônica da ascensão e queda do infame chefão das drogas Pablo Escobar e os esforços da aplicação da lei para detê-lo.',
+    posterUrl: 'https://picsum.photos/seed/36/500/750',
+    genres: ['Biografia', 'Crime', 'Drama'],
+    imageHint: 'colombian flag'
+  },
+  {
+    id: 37,
+    type: 'movie',
+    name: 'O Labirinto do Fauno',
+    year: 2006,
+    synopsis: 'Na Espanha fascista de 1944, a jovem enteada de um sádico oficial do exército escapa para um mundo de fantasia misterioso, mas cativante.',
+    posterUrl: 'https://picsum.photos/seed/37/500/750',
+    genres: ['Drama', 'Fantasia', 'Guerra'],
+    imageHint: 'fantasy creature'
+  },
+  {
+    id: 38,
+    type: 'movie',
+    name: 'A Chegada',
+    year: 2016,
+    synopsis: 'Uma linguista trabalha com os militares para se comunicar com formas de vida alienígenas depois que doze naves espaciais misteriosas aparecem em todo o mundo.',
+    posterUrl: 'https://picsum.photos/seed/38/500/750',
+    genres: ['Drama', 'Mistério', 'Ficção Científica'],
+    imageHint: 'alien spacecraft'
+  },
+  {
+    id: 39,
+    type: 'series',
+    name: 'The Witcher',
+    year: 2019,
+    synopsis: 'Geralt de Rivia, um caçador de monstros solitário, luta para encontrar seu lugar em um mundo onde as pessoas muitas vezes se mostram mais perversas do que as feras.',
+    posterUrl: 'https://picsum.photos/seed/39/500/750',
+    genres: ['Ação', 'Aventura', 'Drama'],
+    imageHint: 'monster hunter'
+  },
+  {
+    id: 40,
+    type: 'movie',
+    name: 'La La Land: Cantando Estações',
+    year: 2016,
+    synopsis: 'Enquanto navegam por suas carreiras em Los Angeles, uma pianista e uma atriz se apaixonam enquanto tentam conciliar suas aspirações com seu romance.',
+    posterUrl: 'https://picsum.photos/seed/40/500/750',
+    genres: ['Comédia', 'Drama', 'Música'],
+    imageHint: 'city stars'
+  },
+  {
+    id: 41,
+    type: 'movie',
+    name: 'Django Livre',
+    year: 2012,
+    synopsis: 'Com a ajuda de um caçador de recompensas alemão, um escravo liberto se propõe a resgatar sua esposa de um brutal proprietário de uma plantação do Mississippi.',
+    posterUrl: 'https://picsum.photos/seed/41/500/750',
+    genres: ['Drama', 'Velho Oeste'],
+    imageHint: 'cowboy silhouette'
+  },
+  {
+    id: 42,
+    type: 'series',
+    name: 'The Handmaid\'s Tale',
+    year: 2017,
+    synopsis: 'Em uma sociedade distópica, uma mulher é forçada a viver como uma concubina sob uma ditadura teocrática fundamentalista.',
+    posterUrl: 'https://picsum.photos/seed/42/500/750',
+    genres: ['Drama', 'Ficção Científica', 'Thriller'],
+    imageHint: 'red cloak'
+  },
+  {
+    id: 43,
+    type: 'movie',
+    name: 'O Lobo de Wall Street',
+    year: 2013,
+    synopsis: 'Baseado na história real de Jordan Belfort, desde sua ascensão a um rico corretor da bolsa vivendo a vida alta até sua queda envolvendo crime, corrupção e o governo federal.',
+    posterUrl: 'https://picsum.photos/seed/43/500/750',
+    genres: ['Biografia', 'Comédia', 'Crime'],
+    imageHint: 'stock market'
+  },
+  {
+    id: 44,
+    type: 'movie',
+    name: 'Her',
+    year: 2013,
+    synopsis: 'Em um futuro próximo, um escritor solitário desenvolve um relacionamento improvável com um sistema operacional projetado para atender a todas as suas necessidades.',
+    posterUrl: 'https://picsum.photos/seed/44/500/750',
+    genres: ['Drama', 'Romance', 'Ficção Científica'],
+    imageHint: 'AI voice'
+  },
+  {
+    id: 45,
+    type: 'series',
+    name: 'Mindhunter',
+    year: 2017,
+    synopsis: 'No final dos anos 1970, dois agentes do FBI expandem a ciência criminal ao mergulhar na psicologia do assassinato e se aproximar de monstros reais.',
+    posterUrl: 'https://picsum.photos/seed/45/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'tape recorder'
+  },
+  {
+    id: 46,
+    type: 'movie',
+    name: 'Get Out',
+    year: 2017,
+    synopsis: 'Um jovem afro-americano visita a propriedade dos pais de sua namorada branca, onde ele se torna ciente de um segredo sombrio que eles estão escondendo.',
+    posterUrl: 'https://picsum.photos/seed/46/500/750',
+    genres: ['Terror', 'Mistério', 'Thriller'],
+    imageHint: 'teacup stir'
+  },
+  {
+    id: 47,
+    type: 'movie',
+    name: 'Moonlight',
+    year: 2016,
+    synopsis: 'Uma crônica da infância, adolescência e vida adulta de um jovem negro gay que cresce em um bairro difícil de Miami.',
+    posterUrl: 'https://picsum.photos/seed/47/500/750',
+    genres: ['Drama'],
+    imageHint: 'beach night'
+  },
+  {
+    id: 48,
+    type: 'series',
+    name: 'Fleabag',
+    year: 2016,
+    synopsis: 'Uma comédia sobre uma jovem de raciocínio rápido, irritada e de luto que navega pela vida e pelo amor em Londres enquanto tenta lidar com a tragédia.',
+    posterUrl: 'https://picsum.photos/seed/48/500/750',
+    genres: ['Comédia', 'Drama'],
+    imageHint: 'fourth wall'
+  },
+  {
+    id: 49,
+    type: 'movie',
+    name: 'O Exterminador do Futuro 2: O Julgamento Final',
+    year: 1991,
+    synopsis: 'Um ciborgue, idêntico ao que falhou em matar Sarah Connor, agora deve proteger seu filho adolescente, John Connor, de um ciborgue mais avançado e poderoso.',
+    posterUrl: 'https://picsum.photos/seed/49/500/750',
+    genres: ['Ação', 'Ficção Científica'],
+    imageHint: 'liquid metal'
+  },
+  {
+    id: 50,
+    type: 'movie',
+    name: 'Alien, o Oitavo Passageiro',
+    year: 1979,
+    synopsis: 'Depois que uma tripulação de uma nave espacial comercial encontra uma forma de vida mortal, eles logo percebem que seu ciclo de vida mal começou.',
+    posterUrl: 'https://picsum.photos/seed/50/500/750',
+    genres: ['Terror', 'Ficção Científica'],
+    imageHint: 'face hugger'
+  },
+  {
+    id: 51,
+    type: 'series',
+    name: 'A Maldição da Residência Hill',
+    year: 2018,
+    synopsis: 'Flutuando entre o passado e o presente, uma família desfeita confronta memórias assustadoras de sua antiga casa e os eventos aterrorizantes que os expulsaram dela.',
+    posterUrl: 'https://picsum.photos/seed/51/500/750',
+    genres: ['Drama', 'Terror', 'Mistério'],
+    imageHint: 'haunted house'
+  },
+  {
+    id: 52,
+    type: 'movie',
+    name: 'O Show de Truman',
+    year: 1998,
+    synopsis: 'Um vendedor de seguros alegre descobre que toda a sua vida é na verdade um reality show de TV.',
+    posterUrl: 'https://picsum.photos/seed/52/500/750',
+    genres: ['Comédia', 'Drama'],
+    imageHint: 'sky stairs'
+  },
+  {
+    id: 53,
+    type: 'movie',
+    name: 'Toy Story',
+    year: 1995,
+    synopsis: 'Um boneco de cowboy fica profundamente ameaçado e com ciúmes quando um novo boneco de astronauta o substitui como o brinquedo principal no quarto de um menino.',
+    posterUrl: 'https://picsum.photos/seed/53/500/750',
+    genres: ['Animação', 'Aventura', 'Comédia'],
+    imageHint: 'toy friends'
+  },
+  {
+    id: 54,
+    type: 'series',
+    name: 'Sherlock',
+    year: 2010,
+    synopsis: 'Uma versão moderna das histórias de mistério de Sir Arthur Conan Doyle, estrelando o excêntrico detetive e seu parceiro médico que resolvem crimes na Londres do século XXI.',
+    posterUrl: 'https://picsum.photos/seed/54/500/750',
+    genres: ['Crime', 'Drama', 'Mistério'],
+    imageHint: 'deduction palace'
+  },
+  {
+    id: 55,
+    type: 'movie',
+    name: 'Coringa',
+    year: 2019,
+    synopsis: 'Em Gotham City, o comediante mentalmente perturbado Arthur Fleck é marginalizado e maltratado pela sociedade. Ele então embarca em uma espiral descendente de revolução e crime sangrento.',
+    posterUrl: 'https://picsum.photos/seed/55/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'stair dance'
+  },
+  {
+    id: 56,
+    type: 'movie',
+    name: 'Apocalypse Now',
+    year: 1979,
+    synopsis: 'Um capitão do Exército dos EUA servindo no Vietnã é encarregado de assassinar um coronel renegado das Forças Especiais que se vê como um deus.',
+    posterUrl: 'https://picsum.photos/seed/56/500/750',
+    genres: ['Drama', 'Mistério', 'Guerra'],
+    imageHint: 'river patrol'
+  },
+  {
+    id: 57,
+    type: 'series',
+    name: 'Succession',
+    year: 2018,
+    synopsis: 'A família Roy é conhecida por controlar a maior empresa de mídia e entretenimento do mundo. No entanto, seu mundo vira de cabeça para baixo quando seu pai se afasta da empresa.',
+    posterUrl: 'https://picsum.photos/seed/57/500/750',
+    genres: ['Comédia', 'Drama'],
+    imageHint: 'corporate boardroom'
+  },
+  {
+    id: 58,
+    type: 'movie',
+    name: 'O Grande Lebowski',
+    year: 1998,
+    synopsis: 'O "Dude" Lebowski, confundido com um milionário Lebowski, busca uma retribuição por seu tapete arruinado e recruta a ajuda de seus companheiros de boliche na jornada.',
+    posterUrl: 'https://picsum.photos/seed/58/500/750',
+    genres: ['Comédia', 'Crime'],
+    imageHint: 'bowling alley'
+  },
+  {
+    id: 59,
+    type: 'movie',
+    name: 'Casablanca',
+    year: 1942,
+    synopsis: 'Um expatriado americano cínico que administra uma boate em Casablanca concorda em ajudar seu antigo amor e o marido fugitivo dela a escaparem dos nazistas.',
+    posterUrl: 'https://picsum.photos/seed/59/500/750',
+    genres: ['Drama', 'Romance', 'Guerra'],
+    imageHint: 'airport fog'
+  },
+  {
+    id: 60,
+    type: 'series',
+    name: 'Better Call Saul',
+    year: 2015,
+    synopsis: 'As provações e tribulações do advogado criminal Jimmy McGill antes de estabelecer seu escritório em Albuquerque, Novo México.',
+    posterUrl: 'https://picsum.photos/seed/60/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'lawyer billboard'
+  },
+  {
+    id: 61,
+    type: 'movie',
+    name: 'Cães de Aluguel',
+    year: 1992,
+    synopsis: 'Quando um simples assalto a uma joalheria dá terrivelmente errado, os criminosos sobreviventes começam a suspeitar que um deles é um informante da polícia.',
+    posterUrl: 'https://picsum.photos/seed/61/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'warehouse standoff'
+  },
+  {
+    id: 62,
+    type: 'movie',
+    name: 'O Sexto Sentido',
+    year: 1999,
+    synopsis: 'Um menino que se comunica com espíritos que não sabem que estão mortos busca a ajuda de um psicólogo infantil desacreditado.',
+    posterUrl: 'https://picsum.photos/seed/62/500/750',
+    genres: ['Drama', 'Mistério', 'Thriller'],
+    imageHint: 'i see dead people'
+  },
+  {
+    id: 63,
+    type: 'series',
+    name: 'Dark',
+    year: 2017,
+    synopsis: 'O desaparecimento de duas crianças em uma cidade alemã expõe os relacionamentos fraturados, vidas duplas e o passado sombrio de quatro famílias que vivem lá, e revela um mistério que abrange três gerações.',
+    posterUrl: 'https://picsum.photos/seed/63/500/750',
+    genres: ['Crime', 'Drama', 'Mistério'],
+    imageHint: 'cave entrance'
+  },
+  {
+    id: 64,
+    type: 'movie',
+    name: 'Laranja Mecânica',
+    year: 1971,
+    synopsis: 'No futuro, um líder de gangue sádico é preso e se voluntaria para um experimento de aversão à conduta, mas não corre como o planejado.',
+    posterUrl: 'https://picsum.photos/seed/64/500/750',
+    genres: ['Crime', 'Drama', 'Ficção Científica'],
+    imageHint: 'milk bar'
+  },
+  {
+    id: 65,
+    type: 'movie',
+    name: 'Os Sete Samurais',
+    year: 1954,
+    synopsis: 'Um agricultor recruta sete samurais para combater bandidos que retornam após a colheita para roubar suas colheitas.',
+    posterUrl: 'https://picsum.photos/seed/65/500/750',
+    genres: ['Ação', 'Drama'],
+    imageHint: 'samurai battle'
+  },
+  {
+    id: 66,
+    type: 'series',
+    name: 'O Gambito da Rainha',
+    year: 2020,
+    synopsis: 'A órfã prodígio do xadrez, Beth Harmon, luta contra o vício em uma busca para se tornar a maior jogadora de xadrez do mundo.',
+    posterUrl: 'https://picsum.photos/seed/66/500/750',
+    genres: ['Drama'],
+    imageHint: 'chess board'
+  },
+  {
+    id: 67,
+    type: 'movie',
+    name: 'Up - Altamente!',
+    year: 2009,
+    synopsis: 'Carl Fredricksen, de 78 anos, viaja para o Paradise Falls em sua casa equipada com balões, inadvertidamente levando um jovem clandestino.',
+    posterUrl: 'https://picsum.photos/seed/67/500/750',
+    genres: ['Animação', 'Aventura', 'Comédia'],
+    imageHint: 'house balloons'
+  },
+  {
+    id: 68,
+    type: 'movie',
+    name: 'WALL-E',
+    year: 2008,
+    synopsis: 'Em um futuro distante, um pequeno robô coletor de lixo embarca inadvertidamente em uma jornada espacial que decidirá o destino da humanidade.',
+    posterUrl: 'https://picsum.photos/seed/68/500/750',
+    genres: ['Animação', 'Aventura', 'Família'],
+    imageHint: 'robot plant'
+  },
+  {
+    id: 69,
+    type: 'series',
+    name: 'Ted Lasso',
+    year: 2020,
+    synopsis: 'O treinador de futebol americano Ted Lasso é contratado para treinar um time de futebol inglês em uma tentativa de sua dona se vingar de seu ex-marido.',
+    posterUrl: 'https://picsum.photos/seed/69/500/750',
+    genres: ['Comédia', 'Drama', 'Esporte'],
+    imageHint: 'believe sign'
+  },
+  {
+    id: 70,
+    type: 'movie',
+    name: 'Homem-Aranha: No Aranhaverso',
+    year: 2018,
+    synopsis: 'O adolescente Miles Morales se torna o Homem-Aranha de sua realidade, cruzando seu caminho com cinco contrapartes de outras dimensões para parar uma ameaça para todas as realidades.',
+    posterUrl: 'https://picsum.photos/seed/70/500/750',
+    genres: ['Animação', 'Ação', 'Aventura'],
+    imageHint: 'multiple spidermen'
+  },
+  {
+    id: 71,
+    type: 'movie',
+    name: 'Cantando na Chuva',
+    year: 1952,
+    synopsis: 'Uma estrela do cinema mudo e seu amigo de longa data e parceiro de dança lutam para se adaptar à transição de Hollywood para o cinema falado.',
+    posterUrl: 'https://picsum.photos/seed/71/500/750',
+    genres: ['Comédia', 'Musical', 'Romance'],
+    imageHint: 'rain dance'
+  },
+  {
+    id: 72,
+    type: 'series',
+    name: 'Fargo',
+    year: 2014,
+    synopsis: 'Várias crônicas de crimes, enganos e assassinatos em e ao redor do meio-oeste congelado. No entanto, tudo de alguma forma volta para Fargo, Dakota do Norte.',
+    posterUrl: 'https://picsum.photos/seed/72/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'snowy landscape'
+  },
+  {
+    id: 73,
+    type: 'movie',
+    name: 'Psicopata Americano',
+    year: 2000,
+    synopsis: 'Um rico executivo bancário de investimentos de Nova York esconde seu alter ego psicopata de seus colegas de trabalho e amigos enquanto se aprofunda em suas fantasias violentas e hedonistas.',
+    posterUrl: 'https://picsum.photos/seed/73/500/750',
+    genres: ['Crime', 'Drama', 'Terror'],
+    imageHint: 'business card'
+  },
+  {
+    id: 74,
+    type: 'movie',
+    name: 'E o Vento Levou',
+    year: 1939,
+    synopsis: 'Uma história de amor manipuladora em meio à Guerra Civil Americana e ao período da Reconstrução.',
+    posterUrl: 'https://picsum.photos/seed/74/500/750',
+    genres: ['Drama', 'História', 'Romance'],
+    imageHint: 'civil war'
+  },
+  {
+    id: 75,
+    type: 'series',
+    name: 'Ozark',
+    year: 2017,
+    synopsis: 'Um consultor financeiro arrasta sua família de Chicago para os Ozarks do Missouri, onde ele deve lavar dinheiro para aplacar um chefe do tráfico.',
+    posterUrl: 'https://picsum.photos/seed/75/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'lake money'
+  },
+  {
+    id: 76,
+    type: 'movie',
+    name: 'Rocky: Um Lutador',
+    year: 1976,
+    synopsis: 'Um boxeador de pequena escala tem uma rara chance de lutar contra o campeão dos pesos pesados em uma luta em que ele se esforça para ir até o fim para sua auto-estima.',
+    posterUrl: 'https://picsum.photos/seed/76/500/750',
+    genres: ['Drama', 'Esporte'],
+    imageHint: 'boxing steps'
+  },
+  {
+    id: 77,
+    type: 'movie',
+    name: 'Um Sonho de Liberdade',
+    year: 1994,
+    synopsis: 'Dois homens presos se unem ao longo de vários anos, encontrando consolo e eventual redenção através de atos de decência comum.',
+    posterUrl: 'https://picsum.photos/seed/77/500/750',
+    genres: ['Drama'],
+    imageHint: 'prison escape'
+  },
+  {
+    id: 78,
+    type: 'series',
+    name: 'The Boys',
+    year: 2019,
+    synopsis: 'Um grupo de vigilantes se propõe a derrubar super-heróis corruptos que abusam de seus superpoderes.',
+    posterUrl: 'https://picsum.photos/seed/78/500/750',
+    genres: ['Ação', 'Comédia', 'Crime'],
+    imageHint: 'superhero satire'
+  },
+  {
+    id: 79,
+    type: 'movie',
+    name: 'A Princesa Prometida',
+    year: 1987,
+    synopsis: 'Enquanto está doente na cama, um menino ouve seu avô ler para ele a história de um menino de fazenda que se tornou pirata que encontra piratas, gigantes, um espadachim habilidoso e um príncipe malvado para se reunir com seu verdadeiro amor.',
+    posterUrl: 'https://picsum.photos/seed/79/500/750',
+    genres: ['Aventura', 'Família', 'Fantasia'],
+    imageHint: 'sword fight'
+  },
+  {
+    id: 80,
+    type: 'movie',
+    name: 'Noivo Neurótico, Noiva Nervosa',
+    year: 1977,
+    synopsis: 'O comediante neurótico de Nova York Alvy Singer se apaixona pela adorável mas desajeitada Annie Hall.',
+    posterUrl: 'https://picsum.photos/seed/80/500/750',
+    genres: ['Comédia', 'Romance'],
+    imageHint: 'new york'
+  },
+  {
+    id: 81,
+    type: 'series',
+    name: 'Seinfeld',
+    year: 1989,
+    synopsis: 'A contínua saga do comediante Jerry Seinfeld e seus excêntricos amigos de Nova York.',
+    posterUrl: 'https://picsum.photos/seed/81/500/750',
+    genres: ['Comédia'],
+    imageHint: 'show about nothing'
+  },
+  {
+    id: 82,
+    type: 'movie',
+    name: 'Os Caça-Fantasmas',
+    year: 1984,
+    synopsis: 'Três ex-parapsicólogos montam uma loja como um serviço único de remoção de fantasmas.',
+    posterUrl: 'https://picsum.photos/seed/82/500/750',
+    genres: ['Ação', 'Comédia', 'Fantasia'],
+    imageHint: 'ghost trap'
+  },
+  {
+    id: 83,
+    type: 'movie',
+    name: 'O Poderoso Chefão II',
+    year: 1974,
+    synopsis: 'A vida inicial e a carreira de Vito Corleone em Nova York dos anos 1920 são retratadas enquanto seu filho, Michael, expande e aperta seu controle sobre o sindicato do crime da família.',
+    posterUrl: 'https://picsum.photos/seed/83/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'cuba trip'
+  },
+  {
+    id: 84,
+    type: 'series',
+    name: 'House',
+    year: 2004,
+    synopsis: 'Um médico anti-social, viciado em analgésicos e misantropo, que se especializa em medicina diagnóstica, faz o que for preciso para resolver casos intrigantes que surgem em seu caminho usando sua equipe de médicos e sua inteligência.',
+    posterUrl: 'https://picsum.photos/seed/84/500/750',
+    genres: ['Drama', 'Mistério'],
+    imageHint: 'vicodin pills'
+  },
+  {
+    id: 85,
+    type: 'movie',
+    name: 'Scarface',
+    year: 1983,
+    synopsis: 'Em 1980, um determinado refugiado cubano assume um cartel de drogas em Miami e sucumbe à ganância.',
+    posterUrl: 'https://picsum.photos/seed/85/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'say hello'
+  },
+  {
+    id: 86,
+    type: 'movie',
+    name: 'O Resgate do Soldado Ryan',
+    year: 1998,
+    synopsis: 'Após o desembarque do Dia D, um grupo de soldados americanos vai atrás das linhas inimigas para resgatar um paraquedista cujos irmãos foram mortos em ação.',
+    posterUrl: 'https://picsum.photos/seed/86/500/750',
+    genres: ['Drama', 'Guerra'],
+    imageHint: 'dday landing'
+  },
+  {
+    id: 87,
+    type: 'series',
+    name: 'True Detective',
+    year: 2014,
+    synopsis: 'Uma série antológica em que as investigações policiais desenterram os segredos pessoais e profissionais dos envolvidos, tanto dentro como fora da lei.',
+    posterUrl: 'https://picsum.photos/seed/87/500/750',
+    genres: ['Crime', 'Drama', 'Mistério'],
+    imageHint: 'flat circle'
+  },
+  {
+    id: 88,
+    type: 'movie',
+    name: 'O Fabuloso Destino de Amélie Poulain',
+    year: 2001,
+    synopsis: 'Amélie é uma garçonete inocente e ingênua em Paris com seu próprio senso de justiça. Ela decide ajudar as pessoas ao seu redor e, ao longo do caminho, descobre o amor.',
+    posterUrl: 'https://picsum.photos/seed/88/500/750',
+    genres: ['Comédia', 'Romance'],
+    imageHint: 'garden gnome'
+  },
+  {
+    id: 89,
+    type: 'movie',
+    name: 'Brilho Eterno de uma Mente sem Lembranças',
+    year: 2004,
+    synopsis: 'Quando seu relacionamento azeda, um casal passa por um procedimento médico para se apagar da memória um do outro.',
+    posterUrl: 'https://picsum.photos/seed/89/500/750',
+    genres: ['Drama', 'Romance', 'Ficção Científica'],
+    imageHint: 'frozen lake'
+  },
+  {
+    id: 90,
+    type: 'series',
+    name: 'The Sopranos',
+    year: 1999,
+    synopsis: 'O chefe da máfia de Nova Jersey, Tony Soprano, lida com problemas pessoais e profissionais que afetam seu estado mental, levando-o a procurar ajuda psiquiátrica profissional.',
+    posterUrl: 'https://picsum.photos/seed/90/500/750',
+    genres: ['Crime', 'Drama'],
+    imageHint: 'duck pond'
+  },
+  {
+    id: 91,
+    type: 'movie',
+    name: 'Star Wars: Episódio V - O Império Contra-Ataca',
+    year: 1980,
+    synopsis: 'Depois que os Rebeldes são brutalmente dominados pelo Império no planeta de gelo Hoth, Luke Skywalker começa o treinamento Jedi com Yoda, enquanto seus amigos são perseguidos por Darth Vader.',
+    posterUrl: 'https://picsum.photos/seed/91/500/750',
+    genres: ['Ação', 'Aventura', 'Fantasia'],
+    imageHint: 'i am your father'
+  },
+  {
+    id: 92,
+    type: 'movie',
+    name: 'Bom Demais para Ser Verdade',
+    year: 1997,
+    synopsis: 'Um escritor misantropo e obsessivo-compulsivo se vê forçado a cuidar do cachorro de seu vizinho gay e se apaixona por uma garçonete que é a única que tolera seu comportamento.',
+    posterUrl: 'https://picsum.photos/seed/92/500/750',
+    genres: ['Comédia', 'Drama', 'Romance'],
+    imageHint: 'brussels griffon'
+  },
+  {
+    id: 93,
+    type: 'series',
+    name: 'Arcane',
+    year: 2021,
+    synopsis: 'Em meio ao conflito entre as cidades utópicas de Piltover e Zaun, as irmãs Vi e Jinx se encontram em lados opostos de uma guerra sobre convicções conflitantes e tecnologia misteriosa.',
+    posterUrl: 'https://picsum.photos/seed/93/500/750',
+    genres: ['Animação', 'Ação', 'Aventura'],
+    imageHint: 'hextech crystal'
+  },
+  {
+    id: 94,
+    type: 'movie',
+    name: 'Titanic',
+    year: 1997,
+    synopsis: 'Uma aristocrata de dezessete anos se apaixona por um artista gentil, mas pobre, a bordo do luxuoso e malfadado R.M.S. Titanic.',
+    posterUrl: 'https://picsum.photos/seed/94/500/750',
+    genres: ['Drama', 'Romance'],
+    imageHint: 'ship bow'
+  },
+  {
+    id: 95,
+    type: 'movie',
+    name: 'O Pianista',
+    year: 2002,
+    synopsis: 'Um músico judeu polonês luta para sobreviver à destruição do gueto de Varsóvia na Segunda Guerra Mundial.',
+    posterUrl: 'https://picsum.photos/seed/95/500/750',
+    genres: ['Biografia', 'Drama', 'Música'],
+    imageHint: 'warsaw ghetto'
+  },
+  {
+    id: 96,
+    type: 'series',
+    name: 'Avatar: A Lenda de Aang',
+    year: 2005,
+    synopsis: 'Em um mundo devastado pela guerra de nações elementais, um jovem garoto redesperta para realizar seu destino como o Avatar e trazer paz ao mundo.',
+    posterUrl: 'https://picsum.photos/seed/96/500/750',
+    genres: ['Animação', 'Ação', 'Aventura'],
+    imageHint: 'air scooter'
+  },
+  {
+    id: 97,
+    type: 'movie',
+    name: 'A Vida é Bela',
+    year: 1997,
+    synopsis: 'Quando um livreiro judeu de mente aberta e seu filho se tornam vítimas do Holocausto, ele usa uma mistura perfeita de vontade, humor e imaginação para proteger seu filho dos perigos de um campo de concentração.',
+    posterUrl: 'https://picsum.photos/seed/97/500/750',
+    genres: ['Comédia', 'Drama', 'Romance'],
+    imageHint: 'concentration camp'
+  },
+  {
+    id: 98,
+    type: 'movie',
+    name: 'Lawrence da Arábia',
+    year: 1962,
+    synopsis: 'A história de T.E. Lawrence, o oficial inglês que uniu com sucesso e liderou as diversas tribos árabes em guerra durante a Primeira Guerra Mundial, a fim de lutar contra os turcos.',
+    posterUrl: 'https://picsum.photos/seed/98/500/750',
+    genres: ['Aventura', 'Biografia', 'Drama'],
+    imageHint: 'desert revolt'
+  },
+  {
+    id: 99,
+    type: 'series',
+    name: 'The Wire',
+    year: 2002,
+    synopsis: 'O cenário de Baltimore é visto através dos olhos dos traficantes de drogas e dos policiais.',
+    posterUrl: 'https://picsum.photos/seed/99/500/750',
+    genres: ['Crime', 'Drama', 'Thriller'],
+    imageHint: 'police wiretap'
+  },
+  {
+    id: 100,
+    type: 'movie',
+    name: 'Os Suspeitos',
+    year: 1995,
+    synopsis: 'Um único sobrevivente de um tiroteio em um barco conta os eventos que levaram ao massacre, que começou quando cinco criminosos se encontraram em uma fila de suspeitos aparentemente aleatória.',
+    posterUrl: 'https://picsum.photos/seed/100/500/750',
+    genres: ['Crime', 'Drama', 'Mistério'],
+    imageHint: 'keyser soze'
+  },
+  {
+    id: 101,
+    type: 'movie',
+    name: 'Cinema Paradiso',
+    year: 1988,
+    synopsis: 'Um cineasta relembra sua infância, quando se apaixonou por filmes em seu cinema local e formou uma amizade profunda com o projecionista do cinema.',
+    posterUrl: 'https://picsum.photos/seed/101/500/750',
+    genres: ['Drama', 'Romance'],
+    imageHint: 'film projector'
   }
 ];
 
@@ -70,5 +1020,17 @@ export const GENRES = [
   'Crime',
   'Drama',
   'Ficção Científica',
-  'Thriller'
+  'Thriller',
+  'Fantasia',
+  'Terror',
+  'Mistério',
+  'Romance',
+  'Animação',
+  'Biografia',
+  'História',
+  'Música',
+  'Guerra',
+  'Velho Oeste',
+  'Família',
+  'Esporte'
 ];
