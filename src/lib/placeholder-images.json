@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "poster-interstellar",
+      "description": "Poster for the movie Interstellar",
+      "imageUrl": "https://images.unsplash.com/photo-1737819505346-9bcd0b7eb851?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c3BhY2UlMjB3b3JtaG9sZXxlbnwwfHx8fDE3NjMxMjM3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "space wormhole"
+    },
+    {
+      "id": "poster-breaking-bad",
+      "description": "Poster for the series Breaking Bad",
+      "imageUrl": "https://images.unsplash.com/photo-1762566944887-4b7b8626600e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVzZXJ0JTIwUlZ8ZW58MHx8fHwxNzYzMTIzNzQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desert RV"
+    },
+    {
+      "id": "poster-the-matrix",
+      "description": "Poster for the movie The Matrix",
+      "imageUrl": "https://images.unsplash.com/photo-1606606767399-01e271823a2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxncmVlbiUyMGNvZGV8ZW58MHx8fHwxNzYzMDUxODc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "green code"
+    },
+    {
+      "id": "poster-parasite",
+      "description": "Poster for the movie Parasite",
+      "imageUrl": "https://images.unsplash.com/photo-1666819247724-f74b378039c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZmFtaWx5JTIwcG9ydHJhaXR8ZW58MHx8fHwxNzYzMDQ1MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "family portrait"
+    },
+    {
+      "id": "poster-game-of-thrones",
+      "description": "Poster for the series Game of Thrones",
+      "imageUrl": "https://images.unsplash.com/photo-1742893989685-afbfcf3b18e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxpcm9uJTIwdGhyb25lfGVufDB8fHx8MTc2MzEyMzc0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "iron throne"
+    },
+    {
+      "id": "poster-inception",
+      "description": "Poster for the movie Inception",
+      "imageUrl": "https://images.unsplash.com/photo-1606839736645-a860bdedb265?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzcGlubmluZyUyMHRvcHxlbnwwfHx8fDE3NjMxMjM3NDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "spinning top"
+    }
+  ]
 }
