@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import TitleClientInteractions from './title-client-interactions';
+import { resolvePosterUrl } from '@/lib/data';
 
 export default function TitlePage({ params }: { params: { id: string } }) {
   const title = TITLES_DATA.find(t => t.id === Number(params.id));
@@ -10,6 +11,8 @@ export default function TitlePage({ params }: { params: { id: string } }) {
   if (!title) {
     notFound();
   }
+  
+  const posterUrl = resolvePosterUrl(title);
 
   return (
     <div className="space-y-8">
@@ -17,7 +20,7 @@ export default function TitlePage({ params }: { params: { id: string } }) {
         <div className="w-full md:w-[280px]">
           <div className="aspect-[2/3] relative rounded-lg overflow-hidden shadow-2xl shadow-black/50 border border-border">
             <Image
-              src={title.posterUrl}
+              src={posterUrl}
               alt={`Poster de ${title.name}`}
               fill
               className="object-cover"
