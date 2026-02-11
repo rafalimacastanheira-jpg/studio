@@ -28,7 +28,9 @@ export function Header() {
     const query = searchInputRef.current?.value.trim();
     if (query) {
       router.push(`/search?q=${encodeURIComponent(query)}`);
-      searchInputRef.current.value = '';
+      if (searchInputRef.current) {
+        searchInputRef.current.value = '';
+      }
     }
   };
 
@@ -37,8 +39,21 @@ export function Header() {
       <div className="container flex h-16 items-center gap-4">
         <div className="mr-4 flex items-center">
           <Link href="/" className="flex items-center gap-2 font-headline text-xl font-bold">
-            <span className="h-3 w-3 rounded-full bg-primary" />
-            LimaStream
+            <div className="flex-shrink-0">
+              <svg width="36" height="32" viewBox="0 0 40 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="rotate(-15 5 12)">
+                  <rect x="5" y="5" width="30" height="7" fill="hsl(var(--destructive))"/>
+                  <rect x="9" y="5" width="3" height="7" fill="white"/>
+                  <rect x="16" y="5" width="3" height="7" fill="white"/>
+                  <rect x="23" y="5" width="3" height="7" fill="white"/>
+                  <rect x="30" y="5" width="3" height="7" fill="white"/>
+                </g>
+                <rect x="5" y="14" width="30" height="21" fill="hsl(var(--destructive))" rx="1"/>
+                <path d="M16 20.5 L 26 24.5 L 16 28.5 Z" fill="hsl(var(--primary))"/>
+                <path d="M32 1 L34.24 5.76 L39.5 6.5 L35.88 9.8 L36.7 15 L32 12.5 L27.3 15 L28.12 9.8 L24.5 6.5 L29.76 5.76 Z" fill="hsl(var(--primary))"/>
+              </svg>
+            </div>
+            <span className="text-foreground">Help<span className="text-destructive">Flix</span></span>
           </Link>
         </div>
 
