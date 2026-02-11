@@ -1,73 +1,59 @@
-
 import type { Title } from '@/lib/definitions';
 
-/**
- * Dataset principal de títulos.
- * Os slugs e posterUrl serão gerados dinamicamente.
- */
-export const ORIGINAL_TITLES_DATA: Omit<Title, 'slug' | 'posterUrl'>[] = [
-  {
-    id: 1,
-    name: "Interstellar",
-    year: 2014,
-    type: "movie",
-    synopsis: "Exploradores viajam por um buraco de minhoca para salvar a humanidade.",
-    genres: ["Ficção Científica", "Drama"],
-  },
-  {
-    id: 2,
-    name: "Breaking Bad",
-    year: 2008,
-    type: "series",
-    synopsis: "Professor de química começa a produzir metanfetamina.",
-    genres: ["Drama", "Crime"],
-  },
-  {
-    id: 3,
-    name: "The Matrix",
-    year: 1999,
-    type: "movie",
-    synopsis: "Um hacker descobre a verdade sobre a realidade.",
-    genres: ["Ação", "Ficção Científica"],
-  },
-  {
-    id: 4,
-    name: "Parasita",
-    year: 2019,
-    type: "movie",
-    synopsis: "Família pobre infiltra-se na casa de uma família rica.",
-    genres: ["Drama", "Thriller"],
-  },
-  {
-    id: 5,
-    name: "The Lord of the Rings",
-    year: 2001,
-    type: "movie",
-    synopsis: "Um hobbit parte numa jornada para destruir um anel poderoso.",
-    genres: ["Fantasia", "Aventura"],
-  },
-  {
-    id: 6,
-    name: "Pulp Fiction",
-    year: 1994,
-    type: "movie",
-    synopsis: "Histórias interligadas do submundo do crime.",
-    genres: ["Crime", "Drama"],
-  },
-  {
-    id: 7,
-    name: "The Crown",
-    year: 2016,
-    type: "series",
-    synopsis: "A história do reinado da Rainha Elizabeth II.",
-    genres: ["Drama", "História"],
-  },
-  {
-    id: 8,
-    name: "The Lion King",
-    year: 1994,
-    type: "movie",
-    synopsis: "Um jovem leão foge após a morte do pai.",
-    genres: ["Animação", "Aventura"],
-  }
+function createSlug(name: string): string {
+    return name
+        .toLowerCase()
+        .replace(/'/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+/* ===============================
+   GERADOR DE CAPA AUTOMÁTICA
+   (Nunca fica sem imagem)
+================================= */
+
+function generatePoster(title: string, id: number) {
+  return `https://picsum.photos/seed/${encodeURIComponent(title + id)}/500/750`
+}
+
+/* ===============================
+   GERADOR DE 120 FILMES/SÉRIES
+================================= */
+
+const genresList = [
+  "Drama",
+  "Ação",
+  "Comédia",
+  "Thriller",
+  "Ficção Científica",
+  "Romance",
+  "Terror",
+  "Aventura"
 ];
+
+function randomGenre() {
+  return genresList[Math.floor(Math.random() * genresList.length)]
+}
+
+export const ORIGINAL_TITLES_DATA: Title[] = Array.from({ length: 120 }, (_, i) => {
+  const id = i + 1;
+  const isMovie = id % 2 === 0;
+
+  const name = isMovie
+    ? `Filme Exemplo ${id}`
+    : `Série Exemplo ${id}`;
+
+  return {
+    id,
+    name,
+    slug: createSlug(name),
+    year: 1990 + (id % 30),
+    synopsis: `Sinopse do ${name}. Esta é uma descrição automática para demonstração do projeto.`,
+    genres: [randomGenre()],
+    type: isMovie ? "movie" : "series",
+    posterUrl: generatePoster(name, id)
+  }
+});
+
+export const ALL_GENRES = [...new Set(genresList)].sort();
