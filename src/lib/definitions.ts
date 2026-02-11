@@ -1,5 +1,6 @@
 export type Title = {
   id: number;
+  slug: string;
   type: 'movie' | 'series';
   name: string;
   year: number;

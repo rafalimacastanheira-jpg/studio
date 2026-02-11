@@ -72,7 +72,7 @@ export default function ProfilePage() {
                     return (
                       <TableRow key={rating.titleId}>
                         <TableCell className="font-medium">
-                          {title ? <Link href={`/title/${title.id}`} className="hover:underline">{title.name}</Link> : `#${rating.titleId}`}
+                          {title ? <Link href={`/title/${title.slug}`} className="hover:underline">{title.name}</Link> : `#${rating.titleId}`}
                         </TableCell>
                         <TableCell className="text-center">
                            <Badge variant="secondary" className="flex items-center gap-1 w-fit mx-auto">

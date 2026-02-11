@@ -14,7 +14,7 @@ const TMDB_POSTER_BASE = 'https://image.tmdb.org/t/p/w500';
 const POSTER_MAP: Record<number, string> = {
   1: `${TMDB_POSTER_BASE}/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg`, // Interstellar
   2: `${TMDB_POSTER_BASE}/ggFHVNu6YYI5L9pCfOacjizRGt.jpg`, // Breaking Bad
-  3: `${TMDB_POSTER_BASE}/aOIuZAjPaRIE0R3zp8UxK7G5B7f.jpg`, // The Matrix
+  3: `${TMDB_POSTER_BASE}/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg`, // The Matrix
   4: `${TMDB_POSTER_BASE}/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg`, // Parasita
   5: `${TMDB_POSTER_BASE}/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg`, // Game of Thrones
   6: `${TMDB_POSTER_BASE}/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg`, // Inception
@@ -38,7 +38,7 @@ const POSTER_MAP: Record<number, string> = {
   27: `${TMDB_POSTER_BASE}/sWgBv7LV2PRoQgkxwlibdGXKz1S.jpg`, // The Mandalorian
   28: `${TMDB_POSTER_BASE}/mEFe8Lj0Coz3YAeS8p2OBpC8hFM.jpg`, // Jurassic Park
   29: `${TMDB_POSTER_BASE}/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg`, // The Lion King
-  30: `${TMDB_POSTER_BASE}/6kbAMLteGO8yyewYau6bJ683sw7.jpg`, // The Crown
+  30: `${TMDB_POSTER_BASE}/1M876KPjulVwppEpldhdc8V4o68.jpg`, // The Crown
 };
 
 /* ================================

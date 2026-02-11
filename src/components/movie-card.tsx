@@ -18,7 +18,7 @@ export default function MovieCard({ title }: MovieCardProps) {
   const { avg, count } = getAverageForTitle(title.id);
 
   return (
-    <Link href={`/title/${title.id}`} className="group block">
+    <Link href={`/title/${title.slug}`} className="group block">
       <Card className="overflow-hidden h-full transition-all duration-300 ease-in-out group-hover:border-primary/50 group-hover:shadow-lg group-hover:shadow-primary/10">
         <CardContent className="p-0">
           <div className="aspect-[2/3] relative">

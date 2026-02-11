@@ -4,6 +4,7 @@ import type { Title } from '@/lib/definitions';
 export const ORIGINAL_TITLES_DATA: Title[] = [
   {
     id: 1,
+    slug: 'interstellar',
     type: 'movie',
     name: 'Interstellar',
     year: 2014,
@@ -14,6 +15,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 2,
+    slug: 'breaking-bad',
     type: 'series',
     name: 'Breaking Bad',
     year: 2008,
@@ -24,6 +26,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 3,
+    slug: 'the-matrix',
     type: 'movie',
     name: 'The Matrix',
     year: 1999,
@@ -34,6 +37,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 4,
+    slug: 'parasita',
     type: 'movie',
     name: 'Parasita',
     year: 2019,
@@ -44,6 +48,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 5,
+    slug: 'a-guerra-dos-tronos',
     type: 'series',
     name: 'A Guerra dos Tronos',
     year: 2011,
@@ -54,6 +59,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 6,
+    slug: 'a-origem',
     type: 'movie',
     name: 'A Origem',
     year: 2010,
@@ -64,6 +70,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 7,
+    slug: 'o-senhor-dos-aneis-a-irmandade-do-anel',
     type: 'movie',
     name: 'O Senhor dos Anéis: A Irmandade do Anel',
     year: 2001,
@@ -74,6 +81,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 8,
+    slug: 'pulp-fiction',
     type: 'movie',
     name: 'Pulp Fiction',
     year: 1994,
@@ -84,6 +92,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 9,
+    slug: 'stranger-things',
     type: 'series',
     name: 'Stranger Things',
     year: 2016,
@@ -94,6 +103,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 10,
+    slug: 'forrest-gump',
     type: 'movie',
     name: 'Forrest Gump',
     year: 1994,
@@ -104,6 +114,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 11,
+    slug: 'clube-da-luta',
     type: 'movie',
     name: 'Clube da Luta',
     year: 1999,
@@ -114,6 +125,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 12,
+    slug: 'the-office',
     type: 'series',
     name: 'The Office',
     year: 2005,
@@ -124,6 +136,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 13,
+    slug: 'o-cavaleiro-das-trevas',
     type: 'movie',
     name: 'O Cavaleiro das Trevas',
     year: 2008,
@@ -134,6 +147,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 14,
+    slug: 'a-lista-de-schindler',
     type: 'movie',
     name: 'A Lista de Schindler',
     year: 1993,
@@ -144,6 +158,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 15,
+    slug: 'friends',
     type: 'series',
     name: 'Friends',
     year: 1994,
@@ -154,6 +169,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 16,
+    slug: 'o-silencio-dos-inocentes',
     type: 'movie',
     name: 'O Silêncio dos Inocentes',
     year: 1991,
@@ -164,6 +180,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 17,
+    slug: 'cidade-de-deus',
     type: 'movie',
     name: 'Cidade de Deus',
     year: 2002,
@@ -174,6 +191,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 18,
+    slug: 'chernobyl',
     type: 'series',
     name: 'Chernobyl',
     year: 2019,
@@ -184,6 +202,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 19,
+    slug: 'gladiador',
     type: 'movie',
     name: 'Gladiador',
     year: 2000,
@@ -194,6 +213,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 20,
+    slug: 'a-viagem-de-chihiro',
     type: 'movie',
     name: 'A Viagem de Chihiro',
     year: 2001,
@@ -204,6 +224,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 21,
+    slug: 'peaky-blinders',
     type: 'series',
     name: 'Peaky Blinders',
     year: 2013,
@@ -214,6 +235,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 22,
+    slug: 'o-padrinho',
     type: 'movie',
     name: 'O Padrinho',
     year: 1972,
@@ -224,6 +246,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 23,
+    slug: 'psicose',
     type: 'movie',
     name: 'Psicose',
     year: 1960,
@@ -234,6 +257,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 24,
+    slug: 'black-mirror',
     type: 'series',
     name: 'Black Mirror',
     year: 2011,
@@ -244,6 +268,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 25,
+    slug: 'o-iluminado',
     type: 'movie',
     name: 'O Iluminado',
     year: 1980,
@@ -254,6 +279,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 26,
+    slug: 'de-volta-para-o-futuro',
     type: 'movie',
     name: 'De Volta para o Futuro',
     year: 1985,
@@ -264,6 +290,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 27,
+    slug: 'the-mandalorian',
     type: 'series',
     name: 'The Mandalorian',
     year: 2019,
@@ -274,6 +301,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 28,
+    slug: 'jurassic-park',
     type: 'movie',
     name: 'Jurassic Park',
     year: 1993,
@@ -284,6 +312,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 29,
+    slug: 'o-rei-leao',
     type: 'movie',
     name: 'O Rei Leão',
     year: 1994,
@@ -294,6 +323,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 30,
+    slug: 'the-crown',
     type: 'series',
     name: 'The Crown',
     year: 2016,
@@ -304,6 +334,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 31,
+    slug: 'blade-runner-2049',
     type: 'movie',
     name: 'Blade Runner 2049',
     year: 2017,
@@ -314,6 +345,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 32,
+    slug: 'mad-max-estrada-da-furia',
     type: 'movie',
     name: 'Mad Max: Estrada da Fúria',
     year: 2015,
@@ -324,6 +356,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 33,
+    slug: 'westworld',
     type: 'series',
     name: 'Westworld',
     year: 2016,
@@ -334,6 +367,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 34,
+    slug: 'o-grande-hotel-budapeste',
     type: 'movie',
     name: 'O Grande Hotel Budapeste',
     year: 2014,
@@ -344,6 +378,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 35,
+    slug: 'whiplash-em-busca-da-perfeicao',
     type: 'movie',
     name: 'Whiplash: Em Busca da Perfeição',
     year: 2014,
@@ -354,6 +389,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 36,
+    slug: 'narcos',
     type: 'series',
     name: 'Narcos',
     year: 2015,
@@ -364,6 +400,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 37,
+    slug: 'o-labirinto-do-fauno',
     type: 'movie',
     name: 'O Labirinto do Fauno',
     year: 2006,
@@ -374,6 +411,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 38,
+    slug: 'a-chegada',
     type: 'movie',
     name: 'A Chegada',
     year: 2016,
@@ -384,6 +422,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 39,
+    slug: 'the-witcher',
     type: 'series',
     name: 'The Witcher',
     year: 2019,
@@ -394,6 +433,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 40,
+    slug: 'la-la-land-cantando-estacoes',
     type: 'movie',
     name: 'La La Land: Cantando Estações',
     year: 2016,
@@ -404,6 +444,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 41,
+    slug: 'django-livre',
     type: 'movie',
     name: 'Django Livre',
     year: 2012,
@@ -414,6 +455,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 42,
+    slug: 'the-handmaids-tale',
     type: 'series',
     name: 'The Handmaid\'s Tale',
     year: 2017,
@@ -424,6 +466,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 43,
+    slug: 'o-lobo-de-wall-street',
     type: 'movie',
     name: 'O Lobo de Wall Street',
     year: 2013,
@@ -434,6 +477,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 44,
+    slug: 'her',
     type: 'movie',
     name: 'Her',
     year: 2013,
@@ -444,6 +488,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 45,
+    slug: 'mindhunter',
     type: 'series',
     name: 'Mindhunter',
     year: 2017,
@@ -454,6 +499,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 46,
+    slug: 'get-out',
     type: 'movie',
     name: 'Get Out',
     year: 2017,
@@ -464,6 +510,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 47,
+    slug: 'moonlight',
     type: 'movie',
     name: 'Moonlight',
     year: 2016,
@@ -474,6 +521,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 48,
+    slug: 'fleabag',
     type: 'series',
     name: 'Fleabag',
     year: 2016,
@@ -484,6 +532,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 49,
+    slug: 'o-exterminador-do-futuro-2-o-julgamento-final',
     type: 'movie',
     name: 'O Exterminador do Futuro 2: O Julgamento Final',
     year: 1991,
@@ -494,6 +543,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 50,
+    slug: 'alien-o-oitavo-passageiro',
     type: 'movie',
     name: 'Alien, o Oitavo Passageiro',
     year: 1979,
@@ -504,6 +554,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 51,
+    slug: 'a-maldicao-da-residencia-hill',
     type: 'series',
     name: 'A Maldição da Residência Hill',
     year: 2018,
@@ -514,6 +565,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 52,
+    slug: 'o-show-de-truman',
     type: 'movie',
     name: 'O Show de Truman',
     year: 1998,
@@ -524,6 +576,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 53,
+    slug: 'toy-story',
     type: 'movie',
     name: 'Toy Story',
     year: 1995,
@@ -534,6 +587,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 54,
+    slug: 'sherlock',
     type: 'series',
     name: 'Sherlock',
     year: 2010,
@@ -544,6 +598,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 55,
+    slug: 'coringa',
     type: 'movie',
     name: 'Coringa',
     year: 2019,
@@ -554,6 +609,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 56,
+    slug: 'apocalypse-now',
     type: 'movie',
     name: 'Apocalypse Now',
     year: 1979,
@@ -564,6 +620,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 57,
+    slug: 'succession',
     type: 'series',
     name: 'Succession',
     year: 2018,
@@ -574,6 +631,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 58,
+    slug: 'o-grande-lebowski',
     type: 'movie',
     name: 'O Grande Lebowski',
     year: 1998,
@@ -584,6 +642,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 59,
+    slug: 'casablanca',
     type: 'movie',
     name: 'Casablanca',
     year: 1942,
@@ -594,6 +653,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 60,
+    slug: 'better-call-saul',
     type: 'series',
     name: 'Better Call Saul',
     year: 2015,
@@ -604,6 +664,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 61,
+    slug: 'caes-de-aluguel',
     type: 'movie',
     name: 'Cães de Aluguel',
     year: 1992,
@@ -614,6 +675,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 62,
+    slug: 'o-sexto-sentido',
     type: 'movie',
     name: 'O Sexto Sentido',
     year: 1999,
@@ -624,6 +686,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 63,
+    slug: 'dark',
     type: 'series',
     name: 'Dark',
     year: 2017,
@@ -634,6 +697,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 64,
+    slug: 'laranja-mecanica',
     type: 'movie',
     name: 'Laranja Mecânica',
     year: 1971,
@@ -644,6 +708,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 65,
+    slug: 'os-sete-samurais',
     type: 'movie',
     name: 'Os Sete Samurais',
     year: 1954,
@@ -654,6 +719,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 66,
+    slug: 'o-gambito-da-rainha',
     type: 'series',
     name: 'O Gambito da Rainha',
     year: 2020,
@@ -664,6 +730,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 67,
+    slug: 'up-altamente',
     type: 'movie',
     name: 'Up - Altamente!',
     year: 2009,
@@ -674,6 +741,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 68,
+    slug: 'wall-e',
     type: 'movie',
     name: 'WALL-E',
     year: 2008,
@@ -684,6 +752,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 69,
+    slug: 'ted-lasso',
     type: 'series',
     name: 'Ted Lasso',
     year: 2020,
@@ -694,6 +763,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 70,
+    slug: 'homem-aranha-no-aranhaverso',
     type: 'movie',
     name: 'Homem-Aranha: No Aranhaverso',
     year: 2018,
@@ -704,6 +774,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 71,
+    slug: 'cantando-na-chuva',
     type: 'movie',
     name: 'Cantando na Chuva',
     year: 1952,
@@ -714,6 +785,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 72,
+    slug: 'fargo',
     type: 'series',
     name: 'Fargo',
     year: 2014,
@@ -724,6 +796,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 73,
+    slug: 'psicopata-americano',
     type: 'movie',
     name: 'Psicopata Americano',
     year: 2000,
@@ -734,6 +807,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 74,
+    slug: 'e-o-vento-levou',
     type: 'movie',
     name: 'E o Vento Levou',
     year: 1939,
@@ -744,6 +818,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 75,
+    slug: 'ozark',
     type: 'series',
     name: 'Ozark',
     year: 2017,
@@ -754,6 +829,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 76,
+    slug: 'rocky-um-lutador',
     type: 'movie',
     name: 'Rocky: Um Lutador',
     year: 1976,
@@ -764,6 +840,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 77,
+    slug: 'um-sonho-de-liberdade',
     type: 'movie',
     name: 'Um Sonho de Liberdade',
     year: 1994,
@@ -774,6 +851,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 78,
+    slug: 'the-boys',
     type: 'series',
     name: 'The Boys',
     year: 2019,
@@ -784,6 +862,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 79,
+    slug: 'a-princesa-prometida',
     type: 'movie',
     name: 'A Princesa Prometida',
     year: 1987,
@@ -794,6 +873,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 80,
+    slug: 'noivo-neurotico-noiva-nervosa',
     type: 'movie',
     name: 'Noivo Neurótico, Noiva Nervosa',
     year: 1977,
@@ -804,6 +884,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 81,
+    slug: 'seinfeld',
     type: 'series',
     name: 'Seinfeld',
     year: 1989,
@@ -814,6 +895,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 82,
+    slug: 'os-caca-fantasmas',
     type: 'movie',
     name: 'Os Caça-Fantasmas',
     year: 1984,
@@ -824,6 +906,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 83,
+    slug: 'o-poderoso-chefao-ii',
     type: 'movie',
     name: 'O Poderoso Chefão II',
     year: 1974,
@@ -834,6 +917,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 84,
+    slug: 'house',
     type: 'series',
     name: 'House',
     year: 2004,
@@ -844,6 +928,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 85,
+    slug: 'scarface',
     type: 'movie',
     name: 'Scarface',
     year: 1983,
@@ -854,6 +939,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 86,
+    slug: 'o-resgate-do-soldado-ryan',
     type: 'movie',
     name: 'O Resgate do Soldado Ryan',
     year: 1998,
@@ -864,6 +950,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 87,
+    slug: 'true-detective',
     type: 'series',
     name: 'True Detective',
     year: 2014,
@@ -874,6 +961,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 88,
+    slug: 'o-fabuloso-destino-de-amelie-poulain',
     type: 'movie',
     name: 'O Fabuloso Destino de Amélie Poulain',
     year: 2001,
@@ -884,6 +972,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 89,
+    slug: 'brilho-eterno-de-uma-mente-sem-lembrancas',
     type: 'movie',
     name: 'Brilho Eterno de uma Mente sem Lembranças',
     year: 2004,
@@ -894,6 +983,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 90,
+    slug: 'the-sopranos',
     type: 'series',
     name: 'The Sopranos',
     year: 1999,
@@ -904,6 +994,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 91,
+    slug: 'star-wars-episodio-v-o-imperio-contra-ataca',
     type: 'movie',
     name: 'Star Wars: Episódio V - O Império Contra-Ataca',
     year: 1980,
@@ -914,6 +1005,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 92,
+    slug: 'bom-demais-para-ser-verdade',
     type: 'movie',
     name: 'Bom Demais para Ser Verdade',
     year: 1997,
@@ -924,6 +1016,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 93,
+    slug: 'arcane',
     type: 'series',
     name: 'Arcane',
     year: 2021,
@@ -934,6 +1027,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 94,
+    slug: 'titanic',
     type: 'movie',
     name: 'Titanic',
     year: 1997,
@@ -944,6 +1038,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 95,
+    slug: 'o-pianista',
     type: 'movie',
     name: 'O Pianista',
     year: 2002,
@@ -954,6 +1049,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 96,
+    slug: 'avatar-a-lenda-de-aang',
     type: 'series',
     name: 'Avatar: A Lenda de Aang',
     year: 2005,
@@ -964,6 +1060,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 97,
+    slug: 'a-vida-e-bela',
     type: 'movie',
     name: 'A Vida é Bela',
     year: 1997,
@@ -974,6 +1071,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 98,
+    slug: 'lawrence-da-arabia',
     type: 'movie',
     name: 'Lawrence da Arábia',
     year: 1962,
@@ -984,6 +1082,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 99,
+    slug: 'the-wire',
     type: 'series',
     name: 'The Wire',
     year: 2002,
@@ -994,6 +1093,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 100,
+    slug: 'os-suspeitos',
     type: 'movie',
     name: 'Os Suspeitos',
     year: 1995,
@@ -1004,6 +1104,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = [
   },
   {
     id: 101,
+    slug: 'cinema-paradiso',
     type: 'movie',
     name: 'Cinema Paradiso',
     year: 1988,
