@@ -1,18 +1,18 @@
 "use client";
 
-import { useMemo } from 'react';
+import { useCallback } from 'react';
 import useLocalStorage from './use-local-storage';
 import type { Comment } from '@/lib/definitions';
 
 export function useComments() {
   const [comments, setComments] = useLocalStorage<Comment[]>('comments', []);
 
-  const getCommentsForTitle = (titleId: number) => {
+  const getCommentsForTitle = useCallback((titleId: number) => {
     return comments.filter(c => c.titleId === titleId)
       .sort((a, b) => new Date(b.ts).getTime() - new Date(a.ts).getTime());
-  };
+  }, [comments]);
   
-  const addComment = (titleId: number, userId: number, userName: string, text: string) => {
+  const addComment = useCallback((titleId: number, userId: number, userName: string, text: string) => {
     if (text.trim().length < 2) {
       throw new Error('O comentário é muito curto.');
     }
@@ -27,7 +27,7 @@ export function useComments() {
       };
       return [newComment, ...prevComments];
     });
-  };
+  }, [setComments]);
 
   return { comments, getCommentsForTitle, addComment };
 }
