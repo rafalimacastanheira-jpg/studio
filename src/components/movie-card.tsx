@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -27,7 +28,6 @@ export default function MovieCard({ title }: MovieCardProps) {
               alt={`Poster de ${title.name}`}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
-              data-ai-hint={title.imageHint}
             />
           </div>
           <div className="p-3 space-y-2">

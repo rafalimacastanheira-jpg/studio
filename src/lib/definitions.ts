@@ -1,3 +1,4 @@
+
 export type Title = {
   id: number;
   slug: string;
@@ -7,7 +8,6 @@ export type Title = {
   synopsis: string;
   posterUrl: string;
   genres: string[];
-  imageHint: string;
 };
 
 export type User = {

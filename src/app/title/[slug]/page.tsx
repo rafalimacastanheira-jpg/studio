@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import TitleClientInteractions from './title-client-interactions';
 
-export default function TitlePage({ params }: { params: { id: string } }) {
-  const title = TITLES_DATA.find(t => t.id === Number(params.id));
+export default function TitlePage({ params }: { params: { slug: string } }) {
+  const title = TITLES_DATA.find(t => t.slug === params.slug);
 
   if (!title) {
     notFound();
