@@ -131,8 +131,9 @@ function createSlug(name: string): string {
         .replace(/^-+|-+$/g, '');
 }
 
-function generatePoster(title: string, id: number): string {
-  return `https://picsum.photos/seed/${encodeURIComponent(title + id)}/500/750`;
+function generatePoster(name: string): string {
+  const query = encodeURIComponent(`${name} movie poster`);
+  return `https://source.unsplash.com/500x750/?${query}`;
 }
 
 const genresList = [
@@ -152,7 +153,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = SEED_TITLES.map(title => ({
   slug: createSlug(title.name),
   synopsis: `Esta é uma sinopse de exemplo para ${title.name}, um aclamado ${title.type === 'movie' ? 'filme' : 'série'} de ${title.year}.`,
   genres: getRandomGenres(),
-  posterUrl: generatePoster(title.name, title.id)
+  posterUrl: generatePoster(title.name)
 }));
 
 const allGeneratedGenres = ORIGINAL_TITLES_DATA.flatMap(t => t.genres);

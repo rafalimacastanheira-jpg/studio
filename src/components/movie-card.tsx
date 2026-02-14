@@ -2,13 +2,13 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Star } from 'lucide-react';
 import type { Title } from '@/lib/definitions';
 import { useRatings } from '@/hooks/use-ratings';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import ImageWithFallback from './image-with-fallback';
 
 interface MovieCardProps {
   title: Title;
@@ -23,7 +23,7 @@ export default function MovieCard({ title }: MovieCardProps) {
       <Card className="overflow-hidden h-full transition-all duration-300 ease-in-out group-hover:border-primary/50 group-hover:shadow-lg group-hover:shadow-primary/10">
         <CardContent className="p-0">
           <div className="aspect-[2/3] relative">
-            <Image
+            <ImageWithFallback
               src={title.posterUrl}
               alt={`Poster de ${title.name}`}
               fill

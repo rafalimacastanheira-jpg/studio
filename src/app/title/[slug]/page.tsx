@@ -1,9 +1,9 @@
 
 import { TITLES_DATA } from '@/lib/data';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import TitleClientInteractions from './title-client-interactions';
+import ImageWithFallback from '@/components/image-with-fallback';
 
 export default function TitlePage({ params }: { params: { slug: string } }) {
   const title = TITLES_DATA.find(t => t.slug === params.slug);
@@ -19,7 +19,7 @@ export default function TitlePage({ params }: { params: { slug: string } }) {
       <article className="grid md:grid-cols-[280px_1fr] gap-8">
         <div className="w-full md:w-[280px]">
           <div className="aspect-[2/3] relative rounded-lg overflow-hidden shadow-2xl shadow-black/50 border border-border">
-            <Image
+            <ImageWithFallback
               src={posterUrl}
               alt={`Poster de ${title.name}`}
               fill
