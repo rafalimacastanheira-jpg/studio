@@ -6,21 +6,27 @@ const POSTER_BASE = "https://image.tmdb.org/t/p/w500";
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 
-  const name = searchParams.get("name") || "";
-  const year = searchParams.get("year") || "";
-  const type = searchParams.get("type") || "movie";
+  const name = (searchParams.get("name") || "").trim();
+  const year = (searchParams.get("year") || "").trim();
+  const type = (searchParams.get("type") || "movie").trim().toLowerCase(); // "movie" | "tv"
 
   const apiKey = process.env.TMDB_API_KEY || process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  if (!apiKey) {
-    return NextResponse.json({ posterUrl: null, error: "Missing TMDB key" }, { status: 400 });
+
+  if (!apiKey || !name) {
+    return NextResponse.json({ posterUrl: null });
   }
 
-  const media = type === "series" ? "tv" : "movie";
+  // ✅ aceita "tv" e também "series" se algum dia vier
+  const media: "movie" | "tv" = type === "tv" || type === "series" ? "tv" : "movie";
 
   const url = new URL(`${TMDB_BASE}/search/${media}`);
   url.searchParams.set("api_key", apiKey);
   url.searchParams.set("query", name);
-  if (year) url.searchParams.set("year", year);
+
+  if (year) {
+    if (media === "movie") url.searchParams.set("year", year);
+    else url.searchParams.set("first_air_date_year", year);
+  }
 
   const res = await fetch(url.toString(), { cache: "no-store" });
   const json: any = await res.json();

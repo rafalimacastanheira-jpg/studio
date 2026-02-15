@@ -1,17 +1,15 @@
 
 "use client";
 
-
-import { useEffect, useState } from "react";
-import { posterAuto } from "@/lib/posters"; 
-import Link from 'next/link';
-import { Star } from 'lucide-react';
-import type { Title } from '@/lib/definitions';
-import { useRatings } from '@/hooks/use-ratings';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
-import ImageWithFallback from './image-with-fallback';
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { Star } from "lucide-react";
+import type { Title } from "@/lib/definitions";
+import { useRatings } from "@/hooks/use-ratings";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import ImageWithFallback from "./image-with-fallback";
 
 interface MovieCardProps {
   title: Title;
@@ -20,51 +18,77 @@ interface MovieCardProps {
 export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
-  const [posterUrl, setPosterUrl] = useState<string>(title.posterUrl);
 
-useEffect(() => {
-  let cancelled = false;
+  const [posterUrl, setPosterUrl] = useState<string | null>(null);
 
-  async function load() {
-    try {
-      const res = await fetch(
-        posterAuto({ name: title.name, year: title.year, type: title.type })
-      );
-      const data = await res.json();
-      if (!cancelled && data?.posterUrl) {
-        setPosterUrl(data.posterUrl);
+  // Normaliza o type pra evitar "movie " com espaço etc.
+  const cleanType = useMemo(() => (title.type || "").trim().toLowerCase(), [title.type]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        // ✅ TMDB usa "tv", não "series"
+        const apiType = cleanType === "series" ? "tv" : "movie";
+
+        const qs = new URLSearchParams({
+          name: title.name,
+          type: apiType,
+        });
+
+        if (title.year) qs.set("year", String(title.year));
+
+        const res = await fetch(`/api/poster?${qs.toString()}`);
+        const data = await res.json();
+
+        if (!cancelled) {
+          setPosterUrl(data?.posterUrl ?? null);
+        }
+      } catch {
+        if (!cancelled) setPosterUrl(null);
       }
-    } catch (e) {}
-  }
+    }
 
-  load();
-  return () => {
-    cancelled = true;
-  };
-}, [title.name, title.year, title.type, title.posterUrl]);
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [title.name, title.year, cleanType]);
+
+  const label = cleanType === "movie" ? "Filme" : "Série";
+
   return (
     <Link href={`/title/${title.slug}`} className="group block">
       <Card className="overflow-hidden h-full transition-all duration-300 ease-in-out group-hover:border-primary/50 group-hover:shadow-lg group-hover:shadow-primary/10">
         <CardContent className="p-0">
-        <div className="aspect-[2/3] relative">
-  <ImageWithFallback
-    src={posterUrl || "https://placehold.co/500x750?text=Sem+Capa"}
-    alt={`Poster de ${title.name}`}
-    fill
-    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-    className="object-cover transition-transform duration-300 group-hover:scale-105"
-  />
-</div>
+          <div className="aspect-[2/3] relative">
+            <ImageWithFallback
+              src={posterUrl || "https://placehold.co/500x750?text=Sem+Capa"}
+              alt={`Poster de ${title.name}`}
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
 
           <div className="p-3 space-y-2">
-            <h3 className="font-bold truncate" title={title.name}>{title.name}</h3>
-            <p className="text-xs text-muted-foreground">{title.type === 'movie' ? 'Filme' : 'Série'} • {title.year}</p>
+            <h3 className="font-bold truncate" title={title.name}>
+              {title.name}
+            </h3>
+
+            <p className="text-xs text-muted-foreground">
+              {label} • {title.year}
+            </p>
+
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 text-primary font-bold">
                 <Star className={cn("w-4 h-4", avg !== null ? "fill-current" : "fill-transparent")} />
-                <span>{avg ?? '–'}</span>
+                <span>{avg ?? "–"}</span>
               </div>
-              <Badge variant="secondary">{count} {count === 1 ? 'voto' : 'votos'}</Badge>
+              <Badge variant="secondary">
+                {count} {count === 1 ? "voto" : "votos"}
+              </Badge>
             </div>
           </div>
         </CardContent>
