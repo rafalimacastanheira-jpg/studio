@@ -1,6 +1,9 @@
 
 "use client";
 
+
+import { useEffect, useState } from "react";
+import { posterAuto } from "@/lib/posters"; 
 import Link from 'next/link';
 import { Star } from 'lucide-react';
 import type { Title } from '@/lib/definitions';
@@ -17,19 +20,42 @@ interface MovieCardProps {
 export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
+  const [posterUrl, setPosterUrl] = useState<string>(title.posterUrl);
 
+useEffect(() => {
+  let cancelled = false;
+
+  async function load() {
+    try {
+      const res = await fetch(
+        posterAuto({ name: title.name, year: title.year, type: title.type })
+      );
+      const data = await res.json();
+      if (!cancelled && data?.posterUrl) {
+        setPosterUrl(data.posterUrl);
+      }
+    } catch (e) {}
+  }
+
+  load();
+  return () => {
+    cancelled = true;
+  };
+}, [title.name, title.year, title.type, title.posterUrl]);
   return (
     <Link href={`/title/${title.slug}`} className="group block">
       <Card className="overflow-hidden h-full transition-all duration-300 ease-in-out group-hover:border-primary/50 group-hover:shadow-lg group-hover:shadow-primary/10">
         <CardContent className="p-0">
-          <div className="aspect-[2/3] relative">
-            <ImageWithFallback
-              src={title.posterUrl}
-              alt={`Poster de ${title.name}`}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
+        <div className="aspect-[2/3] relative">
+  <ImageWithFallback
+    src={posterUrl || "https://placehold.co/500x750?text=Sem+Capa"}
+    alt={`Poster de ${title.name}`}
+    fill
+    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+    className="object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+</div>
+
           <div className="p-3 space-y-2">
             <h3 className="font-bold truncate" title={title.name}>{title.name}</h3>
             <p className="text-xs text-muted-foreground">{title.type === 'movie' ? 'Filme' : 'Série'} • {title.year}</p>
