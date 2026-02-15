@@ -15,7 +15,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
 
-function RatingSection({ titleId }: { titleId: number }) {
+export function RatingSection({ titleId }: { titleId: number }) {
   const { user } = useAuth();
   const { getAverageForTitle, setRating, getRatingForUser } = useRatings();
   const { toast } = useToast();
@@ -81,7 +81,7 @@ function RatingSection({ titleId }: { titleId: number }) {
   );
 }
 
-function CommentsSection({ titleId }: { titleId: number }) {
+export function CommentsSection({ titleId }: { titleId: number }) {
   const { user } = useAuth();
   const { getCommentsForTitle, addComment } = useComments();
   const [newComment, setNewComment] = useState('');
@@ -146,11 +146,3 @@ function CommentsSection({ titleId }: { titleId: number }) {
     </section>
   );
 }
-
-
-const TitleClientInteractions = RatingSection as typeof RatingSection & {
-  CommentsSection: typeof CommentsSection;
-};
-TitleClientInteractions.CommentsSection = CommentsSection;
-
-export default TitleClientInteractions;

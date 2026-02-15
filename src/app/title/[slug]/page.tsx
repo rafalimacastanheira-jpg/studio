@@ -2,7 +2,7 @@
 import { TITLES_DATA } from '@/lib/data';
 import { notFound } from 'next/navigation';
 import { Badge } from '@/components/ui/badge';
-import TitleClientInteractions from './title-client-interactions';
+import { RatingSection, CommentsSection } from './title-client-interactions';
 import ImageWithFallback from '@/components/image-with-fallback';
 
 export default function TitlePage({ params }: { params: { slug: string } }) {
@@ -44,7 +44,7 @@ export default function TitlePage({ params }: { params: { slug: string } }) {
             ))}
           </div>
 
-          <TitleClientInteractions titleId={title.id} />
+          <RatingSection titleId={title.id} />
           
           <div>
             <h2 className="font-headline text-xl font-bold mb-2">Sinopse</h2>
@@ -53,7 +53,7 @@ export default function TitlePage({ params }: { params: { slug: string } }) {
         </div>
       </article>
 
-      <TitleClientInteractions.CommentsSection titleId={title.id} />
+      <CommentsSection titleId={title.id} />
     </div>
   );
 }
