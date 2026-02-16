@@ -17,10 +17,6 @@ export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
 
-  const cleanType = (title.type || "").trim().toLowerCase();
-  const label = cleanType === "movie" ? "Filme" : "Série";
-
-  // ✅ Em modo estático, a imagem tem que vir pronta dos dados
   const posterUrl =
     title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
@@ -44,7 +40,7 @@ export default function MovieCard({ title }: MovieCardProps) {
             </h3>
 
             <p className="text-xs text-muted-foreground">
-              {label} • {title.year}
+              {title.type === "movie" ? "Filme" : "Série"} • {title.year}
             </p>
 
             <div className="flex items-center gap-2">
@@ -57,6 +53,7 @@ export default function MovieCard({ title }: MovieCardProps) {
                 />
                 <span>{avg ?? "–"}</span>
               </div>
+
               <Badge variant="secondary">
                 {count} {count === 1 ? "voto" : "votos"}
               </Badge>

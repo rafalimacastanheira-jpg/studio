@@ -1,19 +1,19 @@
 import { TITLES_DATA } from "@/lib/data";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
-import { RatingSection, CommentsSection } from "./title-client-interactions";
 import ImageWithFallback from "@/components/image-with-fallback";
+import { RatingSection, CommentsSection } from "./title-client-interactions";
 
 type PageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
   return TITLES_DATA.map((t) => ({ slug: t.slug }));
 }
 
-export default function Page({ params }: PageProps) {
-  const { slug } = params;
+export default async function Page({ params }: PageProps) {
+  const { slug } = await params;
 
   const title = TITLES_DATA.find((t) => t.slug === slug);
   if (!title) notFound();
@@ -42,6 +42,7 @@ export default function Page({ params }: PageProps) {
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">
               {title.type === "movie" ? "Filme" : "Série"}
             </p>
+
             <h1 className="font-headline text-4xl font-bold">
               {title.name}{" "}
               <span className="text-muted-foreground font-light">
@@ -51,7 +52,7 @@ export default function Page({ params }: PageProps) {
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {(title.genres ?? []).map((genre) => (
+            {title.genres?.map((genre) => (
               <Badge key={genre} variant="secondary">
                 {genre}
               </Badge>
