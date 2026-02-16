@@ -17,8 +17,11 @@ export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
 
+  const cleanType = (title.type || "").trim().toLowerCase();
+  const label = cleanType === "movie" ? "Filme" : "Série";
+
   const posterUrl =
-    title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
+    (title as any).posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
   return (
     <Link href={`/title/${title.slug}`} className="group block">
@@ -40,17 +43,12 @@ export default function MovieCard({ title }: MovieCardProps) {
             </h3>
 
             <p className="text-xs text-muted-foreground">
-              {title.type === "movie" ? "Filme" : "Série"} • {title.year}
+              {label} • {title.year}
             </p>
 
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 text-primary font-bold">
-                <Star
-                  className={cn(
-                    "w-4 h-4",
-                    avg !== null ? "fill-current" : "fill-transparent"
-                  )}
-                />
+                <Star className={cn("w-4 h-4", avg !== null ? "fill-current" : "fill-transparent")} />
                 <span>{avg ?? "–"}</span>
               </div>
 
