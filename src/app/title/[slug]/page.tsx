@@ -1,18 +1,25 @@
+import { TITLES_DATA } from "@/lib/data";
+import { notFound } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
+import { RatingSection, CommentsSection } from "./title-client-interactions";
+import ImageWithFallback from "@/components/image-with-fallback";
 
-import { TITLES_DATA } from '@/lib/data';
-import { notFound } from 'next/navigation';
-import { Badge } from '@/components/ui/badge';
-import { RatingSection, CommentsSection } from './title-client-interactions';
-import ImageWithFallback from '@/components/image-with-fallback';
+type PageProps = {
+  params: { slug: string };
+};
 
-export default function TitlePage({ params }: { params: { slug: string } }) {
-  const title = TITLES_DATA.find(t => t.slug === params.slug);
+export function generateStaticParams() {
+  return TITLES_DATA.map((t) => ({ slug: t.slug }));
+}
 
-  if (!title) {
-    notFound();
-  }
-  
-  const posterUrl = title.posterUrl;
+export default function Page({ params }: PageProps) {
+  const { slug } = params;
+
+  const title = TITLES_DATA.find((t) => t.slug === slug);
+  if (!title) notFound();
+
+  const posterUrl =
+    title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
   return (
     <div className="space-y-8">
@@ -29,26 +36,35 @@ export default function TitlePage({ params }: { params: { slug: string } }) {
             />
           </div>
         </div>
-        
+
         <div className="flex flex-col gap-4">
           <div className="space-y-2">
             <p className="text-sm font-semibold text-primary uppercase tracking-wider">
-              {title.type === 'movie' ? 'Filme' : 'Série'}
+              {title.type === "movie" ? "Filme" : "Série"}
             </p>
-            <h1 className="font-headline text-4xl font-bold">{title.name} <span className="text-muted-foreground font-light">({title.year})</span></h1>
+            <h1 className="font-headline text-4xl font-bold">
+              {title.name}{" "}
+              <span className="text-muted-foreground font-light">
+                ({title.year})
+              </span>
+            </h1>
           </div>
-          
+
           <div className="flex flex-wrap gap-2">
-            {title.genres.map(genre => (
-              <Badge key={genre} variant="secondary">{genre}</Badge>
+            {(title.genres ?? []).map((genre) => (
+              <Badge key={genre} variant="secondary">
+                {genre}
+              </Badge>
             ))}
           </div>
 
           <RatingSection titleId={title.id} />
-          
+
           <div>
             <h2 className="font-headline text-xl font-bold mb-2">Sinopse</h2>
-            <p className="text-muted-foreground leading-relaxed">{title.synopsis}</p>
+            <p className="text-muted-foreground leading-relaxed">
+              {title.synopsis}
+            </p>
           </div>
         </div>
       </article>

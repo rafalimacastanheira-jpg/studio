@@ -1,7 +1,5 @@
-
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Star } from "lucide-react";
 import type { Title } from "@/lib/definitions";
@@ -19,44 +17,12 @@ export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
 
-  const [posterUrl, setPosterUrl] = useState<string | null>(null);
-
-  // Normaliza o type pra evitar "movie " com espaço etc.
-  const cleanType = useMemo(() => (title.type || "").trim().toLowerCase(), [title.type]);
-
-  useEffect(() => {
-    let cancelled = false;
-
-    async function load() {
-      try {
-        // ✅ TMDB usa "tv", não "series"
-        const apiType = cleanType === "series" ? "tv" : "movie";
-
-        const qs = new URLSearchParams({
-          name: title.name,
-          type: apiType,
-        });
-
-        if (title.year) qs.set("year", String(title.year));
-
-        const res = await fetch(`/api/poster?${qs.toString()}`);
-        const data = await res.json();
-
-        if (!cancelled) {
-          setPosterUrl(data?.posterUrl ?? null);
-        }
-      } catch {
-        if (!cancelled) setPosterUrl(null);
-      }
-    }
-
-    load();
-    return () => {
-      cancelled = true;
-    };
-  }, [title.name, title.year, cleanType]);
-
+  const cleanType = (title.type || "").trim().toLowerCase();
   const label = cleanType === "movie" ? "Filme" : "Série";
+
+  // ✅ Em modo estático, a imagem tem que vir pronta dos dados
+  const posterUrl =
+    title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
   return (
     <Link href={`/title/${title.slug}`} className="group block">
@@ -64,7 +30,7 @@ export default function MovieCard({ title }: MovieCardProps) {
         <CardContent className="p-0">
           <div className="aspect-[2/3] relative">
             <ImageWithFallback
-              src={posterUrl || "https://placehold.co/500x750?text=Sem+Capa"}
+              src={posterUrl}
               alt={`Poster de ${title.name}`}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
@@ -83,7 +49,12 @@ export default function MovieCard({ title }: MovieCardProps) {
 
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1 text-primary font-bold">
-                <Star className={cn("w-4 h-4", avg !== null ? "fill-current" : "fill-transparent")} />
+                <Star
+                  className={cn(
+                    "w-4 h-4",
+                    avg !== null ? "fill-current" : "fill-transparent"
+                  )}
+                />
                 <span>{avg ?? "–"}</span>
               </div>
               <Badge variant="secondary">
