@@ -20,26 +20,13 @@ function slugify(name: string): string {
 }
 
 const genresList = [
-  "Drama",
-  "Ação",
-  "Comédia",
-  "Thriller",
-  "Ficção Científica",
-  "Romance",
-  "Terror",
-  "Aventura",
-  "Crime",
-  "Fantasia",
-  "História",
-  "Animação",
-  "Mistério",
-  "Família",
-  "Guerra",
-  "Musical"
+  "Drama", "Ação", "Comédia", "Thriller", "Ficção Científica", "Romance",
+  "Terror", "Aventura", "Crime", "Fantasia", "História", "Animação",
+  "Mistério", "Família", "Guerra", "Musical"
 ];
 
 function getRandomGenres(): string[] {
-  const num = Math.floor(Math.random() * 2) + 1; // 1 ou 2
+  const num = Math.floor(Math.random() * 2) + 1;
   const shuffled = [...genresList].sort(() => 0.5 - Math.random());
   return shuffled.slice(0, num);
 }

@@ -1,9 +1,11 @@
 "use client";
 
-import Image, { type ImageProps } from "next/image";
-import { useState } from "react";
+import Image from "next/image";
+import type { ImageProps } from "next/image";
+import { useEffect, useState } from "react";
 
-type Props = ImageProps & {
+type Props = Omit<ImageProps, "src"> & {
+  src: string | { src: string };
   fallbackSrc?: string;
 };
 
@@ -13,15 +15,21 @@ export default function ImageWithFallback({
   alt,
   ...props
 }: Props) {
-  const [imgSrc, setImgSrc] = useState(src);
+  const normalizedSrc = typeof src === "string" ? src : src.src;
+
+  const [imgSrc, setImgSrc] = useState<string>(normalizedSrc);
+
+  // ✅ quando src mudar (hidratação/navegação), atualiza
+  useEffect(() => {
+    setImgSrc(normalizedSrc);
+  }, [normalizedSrc]);
 
   return (
     <Image
-      
-    {...props}
+      {...props}
       alt={alt}
       src={imgSrc}
-      unoptimized // ✅ força modo estático (GitHub Pages)
+      unoptimized
       onError={() => setImgSrc(fallbackSrc)}
     />
   );

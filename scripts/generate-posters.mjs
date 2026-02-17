@@ -2,18 +2,12 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-const FORCE = process.argv.includes("--force");
-
 const ROOT = process.cwd();
+
 const SEED_PATH = path.join(ROOT, "src", "lib", "seed-titles.json");
 const OUT_PATH = path.join(ROOT, "src", "lib", "posters.json");
 
 const TMDB_KEY = process.env.TMDB_API_KEY || process.env.NEXT_PUBLIC_TMDB_API_KEY;
-
-if (!TMDB_KEY) {
-  console.error("❌ Falta TMDB_API_KEY no ambiente.");
-  process.exit(1);
-}
 
 function slugify(name) {
   return name
@@ -25,31 +19,23 @@ function slugify(name) {
     .replace(/^-+|-+$/g, "");
 }
 
-async function safeReadJson(file, fallback) {
-  try {
-    const txt = await fs.readFile(file, "utf8");
-    return JSON.parse(txt);
-  } catch {
-    return fallback;
-  }
-}
-
 async function tmdbSearch({ name, year, type }) {
-  const base = "https://api.themoviedb.org/3";
   const isMovie = type === "movie";
+  const endpoint = isMovie ? "search/movie" : "search/tv";
+  const query = new URLSearchParams({
+    api_key: TMDB_KEY,
+    query: name,
+    include_adult: "false"
+  });
 
-  const url = new URL(isMovie ? `${base}/search/movie` : `${base}/search/tv`);
-  url.searchParams.set("api_key", TMDB_KEY);
-  url.searchParams.set("query", name);
-  url.searchParams.set("include_adult", "false");
-  url.searchParams.set("language", "pt-BR");
+  // ajuda muito na precisão
+  if (isMovie && year) query.set("year", String(year));
+  if (!isMovie && year) query.set("first_air_date_year", String(year));
 
-  // ano ajuda MUITO a acertar
-  if (isMovie) url.searchParams.set("year", String(year));
-  else url.searchParams.set("first_air_date_year", String(year));
+  const url = `https://api.themoviedb.org/3/${endpoint}?${query.toString()}`;
+  const res = await fetch(url);
 
-  const res = await fetch(url.toString());
-  if (!res.ok) throw new Error(`TMDB search falhou: ${res.status}`);
+  if (!res.ok) return null;
 
   const data = await res.json();
   const first = data?.results?.[0];
@@ -59,53 +45,61 @@ async function tmdbSearch({ name, year, type }) {
 }
 
 async function main() {
-  const seed = await safeReadJson(SEED_PATH, []);
-  const existing = await safeReadJson(OUT_PATH, {});
+  if (!TMDB_KEY) {
+    console.error("❌ Falta TMDB_API_KEY no ambiente.");
+    process.exit(1);
+  }
+
+  const force = process.argv.includes("--force");
+
+  const seedRaw = await fs.readFile(SEED_PATH, "utf8");
+  const seed = JSON.parse(seedRaw);
+
+  let existing = {};
+  try {
+    const existingRaw = await fs.readFile(OUT_PATH, "utf8");
+    existing = JSON.parse(existingRaw);
+  } catch {
+    existing = {};
+  }
+
+  let newCount = 0;
+  let already = 0;
+  let missing = 0;
 
   const posters = { ...existing };
 
-  let novos = 0;
-  let jaExistiam = 0;
-  let semCapa = 0;
+  for (const item of seed) {
+    const slug = slugify(item.name);
 
-  for (const t of seed) {
-    const slug = slugify(t.name);
-
-    if (!FORCE && posters[slug]) {
-      jaExistiam++;
+    if (!force && posters[slug]) {
+      already++;
       continue;
     }
 
-    try {
-      const url = await tmdbSearch(t);
-      if (url) {
-        posters[slug] = url;
-        novos++;
-      } else {
-        posters[slug] = "https://placehold.co/500x750?text=Sem+Capa";
-        semCapa++;
-      }
-    } catch (err) {
-      posters[slug] = "https://placehold.co/500x750?text=Sem+Capa";
-      semCapa++;
-      console.log(`⚠️ ${t.name} (${t.year}) -> erro: ${err.message}`);
+    const posterUrl = await tmdbSearch(item);
+
+    if (posterUrl) {
+      posters[slug] = posterUrl;
+      newCount++;
+    } else {
+      missing++;
+      // não grava placeholder aqui (deixa o app usar fallback)
+      if (force) delete posters[slug];
     }
 
-    // pequeno delay pra evitar rate limit
-    await new Promise((r) => setTimeout(r, 150));
+    // evita estourar limite
+    await new Promise((r) => setTimeout(r, 250));
   }
 
-  // grava ordenado
-  const ordered = Object.fromEntries(Object.entries(posters).sort(([a], [b]) => a.localeCompare(b)));
-
-  await fs.writeFile(OUT_PATH, JSON.stringify(ordered, null, 2), "utf8");
+  await fs.writeFile(OUT_PATH, JSON.stringify(posters, null, 2), "utf8");
 
   console.log("\n=== FEITO ===");
-  console.log("Capas novas:", novos);
-  console.log("Já existiam:", jaExistiam);
-  console.log("Sem capa:", semCapa);
+  console.log("Capas novas:", newCount);
+  console.log("Já existiam:", already);
+  console.log("Sem capa:", missing);
   console.log("Arquivo atualizado:", OUT_PATH);
-  console.log("Modo:", FORCE ? "FORCE (sobrescrevendo)" : "normal (sem sobrescrever)");
+  if (force) console.log("Modo: FORCE (sobrescrevendo)");
 }
 
 main().catch((e) => {
