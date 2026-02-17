@@ -1,14 +1,14 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+const repo = "studio"; // <-- nome do repositório
 
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
 
-  // ✅ ESSENCIAL para GitHub Pages quando o repo é /studio
-  basePath: isProd ? "/studio" : "",
-  assetPrefix: isProd ? "/studio/" : "",
+  // ✅ MUITO IMPORTANTE para GitHub Pages (project page)
+  basePath: `/${repo}`,
+  assetPrefix: `/${repo}/`,
 
   images: {
     unoptimized: true,

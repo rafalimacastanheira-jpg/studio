@@ -1,16 +1,12 @@
 "use client";
 
-import Image, { type ImageProps, type StaticImageData } from "next/image";
+import Image, { type ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 type Props = Omit<ImageProps, "src"> & {
-  src: string | StaticImageData;
+  src: string; // ✅ força string (seus posters são string)
   fallbackSrc?: string;
 };
-
-function normalizeSrc(src: string | StaticImageData) {
-  return typeof src === "string" ? src : src.src;
-}
 
 export default function ImageWithFallback({
   src,
@@ -18,13 +14,12 @@ export default function ImageWithFallback({
   alt,
   ...props
 }: Props) {
-  const normalized = normalizeSrc(src);
-  const [imgSrc, setImgSrc] = useState(normalized);
+  const [imgSrc, setImgSrc] = useState(src);
 
-  // ✅ quando muda de página/filme, atualiza a imagem corretamente
+  // ✅ se o src mudar, atualiza a imagem (evita ficar “preso” no fallback)
   useEffect(() => {
-    setImgSrc(normalized);
-  }, [normalized]);
+    setImgSrc(src);
+  }, [src]);
 
   return (
     <Image
