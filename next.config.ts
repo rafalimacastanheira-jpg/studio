@@ -1,12 +1,11 @@
 import type { NextConfig } from "next";
 
-const repo = "studio"; // <-- nome do repositório
+const repo = "studio"; // <-- nome do repositório no GitHub
 
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
 
-  // ✅ MUITO IMPORTANTE para GitHub Pages (project page)
   basePath: `/${repo}`,
   assetPrefix: `/${repo}/`,
 

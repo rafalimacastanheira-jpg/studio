@@ -4,7 +4,7 @@ import Image, { type ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 type Props = Omit<ImageProps, "src"> & {
-  src: string; // ✅ força string (seus posters são string)
+  src: string;                 // <- força string
   fallbackSrc?: string;
 };
 
@@ -14,9 +14,9 @@ export default function ImageWithFallback({
   alt,
   ...props
 }: Props) {
-  const [imgSrc, setImgSrc] = useState(src);
+  const [imgSrc, setImgSrc] = useState<string>(src);
 
-  // ✅ se o src mudar, atualiza a imagem (evita ficar “preso” no fallback)
+  // ✅ IMPORTANTÍSSIMO: quando o src mudar, atualiza o state
   useEffect(() => {
     setImgSrc(src);
   }, [src]);
