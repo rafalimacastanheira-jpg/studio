@@ -1,23 +1,6 @@
 import type { Title } from "@/lib/definitions";
 import POSTERS from "./posters.json";
-
-type SeedTitle = {
-  id: number;
-  name: string;
-  year: number;
-  type: "movie" | "series";
-};
-
-const SEED_TITLES: SeedTitle[] = [
-  { id: 1, name: "Interstellar", year: 2014, type: "movie" },
-  { id: 2, name: "Inception", year: 2010, type: "movie" },
-  { id: 3, name: "The Matrix", year: 1999, type: "movie" },
-  { id: 4, name: "Parasite", year: 2019, type: "movie" },
-  { id: 5, name: "The Dark Knight", year: 2008, type: "movie" },
-  { id: 6, name: "Pulp Fiction", year: 1994, type: "movie" },
-  { id: 51, name: "Breaking Bad", year: 2008, type: "series" },
-  { id: 100, name: "Loki", year: 2021, type: "series" }
-];
+import { SEED_TITLES } from "./seed-titles";
 
 function slugify(name: string): string {
   return name
@@ -29,18 +12,30 @@ function slugify(name: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+const genresList = [
+  "Drama", "Ação", "Comédia", "Thriller", "Ficção Científica", "Romance",
+  "Terror", "Aventura", "Crime", "Fantasia", "História", "Animação",
+  "Mistério", "Família", "Guerra", "Musical"
+];
+
+function getRandomGenres(): string[] {
+  const num = Math.floor(Math.random() * 2) + 1;
+  const shuffled = [...genresList].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, num);
+}
+
 export const ORIGINAL_TITLES_DATA: Title[] = SEED_TITLES.map((t) => {
   const slug = slugify(t.name);
 
   return {
     ...t,
     slug,
-    synopsis: `Sinopse de ${t.name}.`,
-    genres: ["Drama"],
+    synopsis: `Esta é uma sinopse de exemplo para ${t.name}, um aclamado ${t.type === "movie" ? "filme" : "série"} de ${t.year}.`,
+    genres: getRandomGenres(),
     posterUrl:
       (POSTERS as Record<string, string>)[slug] ??
-      "https://placehold.co/500x750?text=Sem+Capa"
+      "https://placehold.co/500x750?text=Sem+Capa",
   };
 });
 
-export const ALL_GENRES = ["Drama"];
+export const ALL_GENRES = [...new Set(ORIGINAL_TITLES_DATA.flatMap((t) => t.genres))].sort();
