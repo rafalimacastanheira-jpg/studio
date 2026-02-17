@@ -1,6 +1,6 @@
-import type { Title } from "@/lib/definitions";
-import SEED from "@/lib/seed-titles.json";
-import POSTERS from "@/lib/posters.json";
+import type { Title } from "./definitions";
+import SEED from "./seed-titles.json";
+import POSTERS from "./posters.json";
 
 export type SeedTitle = {
   id: number;
@@ -20,9 +20,22 @@ function slugify(name: string): string {
 }
 
 const genresList = [
-  "Drama", "Ação", "Comédia", "Thriller", "Ficção Científica", "Romance",
-  "Terror", "Aventura", "Crime", "Fantasia", "História", "Animação",
-  "Mistério", "Família", "Guerra", "Musical"
+  "Drama",
+  "Ação",
+  "Comédia",
+  "Thriller",
+  "Ficção Científica",
+  "Romance",
+  "Terror",
+  "Aventura",
+  "Crime",
+  "Fantasia",
+  "História",
+  "Animação",
+  "Mistério",
+  "Família",
+  "Guerra",
+  "Musical",
 ];
 
 function getRandomGenres(): string[] {
@@ -43,7 +56,7 @@ export const ORIGINAL_TITLES_DATA: Title[] = (SEED as SeedTitle[]).map((t) => {
       t.type === "movie" ? "filme" : "série"
     } de ${t.year}.`,
     genres: getRandomGenres(),
-    posterUrl: postersMap[slug] ?? "https://placehold.co/500x750?text=Sem+Capa"
+    posterUrl: postersMap[slug] ?? "https://placehold.co/500x750?text=Sem+Capa",
   };
 });
 
