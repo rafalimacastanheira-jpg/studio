@@ -1,13 +1,16 @@
 "use client";
 
-import Image from "next/image";
-import type { ImageProps } from "next/image";
+import Image, { type ImageProps, type StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
 type Props = Omit<ImageProps, "src"> & {
-  src: string | { src: string };
+  src: string | StaticImageData;
   fallbackSrc?: string;
 };
+
+function normalizeSrc(src: string | StaticImageData) {
+  return typeof src === "string" ? src : src.src;
+}
 
 export default function ImageWithFallback({
   src,
@@ -15,14 +18,13 @@ export default function ImageWithFallback({
   alt,
   ...props
 }: Props) {
-  const normalizedSrc = typeof src === "string" ? src : src.src;
+  const normalized = normalizeSrc(src);
+  const [imgSrc, setImgSrc] = useState(normalized);
 
-  const [imgSrc, setImgSrc] = useState<string>(normalizedSrc);
-
-  // ✅ quando src mudar (hidratação/navegação), atualiza
+  // ✅ quando muda de página/filme, atualiza a imagem corretamente
   useEffect(() => {
-    setImgSrc(normalizedSrc);
-  }, [normalizedSrc]);
+    setImgSrc(normalized);
+  }, [normalized]);
 
   return (
     <Image
