@@ -17,10 +17,11 @@ export default function MovieCard({ title }: MovieCardProps) {
   const { getAverageForTitle } = useRatings();
   const { avg, count } = getAverageForTitle(title.id);
 
-  const label = title.type === "movie" ? "Filme" : "Série";
+  const cleanType = (title.type || "").trim().toLowerCase();
+  const label = cleanType === "movie" ? "Filme" : "Série";
 
-  // ✅ no GitHub Pages tem de vir pronto do data.ts
-  const posterSrc = title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
+  // ✅ pega direto do dataset (posters.json -> titles-data.ts)
+  const posterUrl = title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
   return (
     <Link href={`/title/${title.slug}`} className="group block">
@@ -28,7 +29,7 @@ export default function MovieCard({ title }: MovieCardProps) {
         <CardContent className="p-0">
           <div className="aspect-[2/3] relative">
             <ImageWithFallback
-              src={posterSrc}
+              src={posterUrl}
               alt={`Poster de ${title.name}`}
               fill
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 200px"
@@ -50,6 +51,7 @@ export default function MovieCard({ title }: MovieCardProps) {
                 <Star className={cn("w-4 h-4", avg !== null ? "fill-current" : "fill-transparent")} />
                 <span>{avg ?? "–"}</span>
               </div>
+
               <Badge variant="secondary">
                 {count} {count === 1 ? "voto" : "votos"}
               </Badge>

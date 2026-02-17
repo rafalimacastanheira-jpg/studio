@@ -1,38 +1,12 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import fs from "fs";
+import path from "path";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Ajusta caminhos do teu projeto
-const postersPath = path.join(__dirname, "..", "src", "lib", "posters.json");
-const seedPath = path.join(__dirname, "..", "src", "lib", "seed-titles.ts");
-
-// TMDB
-const TMDB_API_KEY = process.env.TMDB_API_KEY || process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
 if (!TMDB_API_KEY) {
-  console.error("❌ Falta TMDB_API_KEY no .env.local");
+  console.error("✘ Falta TMDB_API_KEY");
   process.exit(1);
 }
-
-// Importar SEED_TITLES do TS (jeito simples: extrair o array por regex)
-const seedFile = fs.readFileSync(seedPath, "utf8");
-const match = seedFile.match(/export const SEED_TITLES: SeedTitle\[] = ([\s\S]*);\s*$/m);
-
-if (!match) {
-  console.error("❌ Não consegui ler SEED_TITLES em seed-titles.ts");
-  process.exit(1);
-}
-
-// Avaliar o array (transforma TS em JS básico)
-const arrayText = match[1]
-  .replace(/: "movie" \| "series"/g, "")
-  .replace(/type: "movie" \| "series"/g, "")
-  .replace(/as SeedTitle\[\]/g, "");
-
-const SEED_TITLES = Function(`"use strict"; return ${arrayText};`)();
 
 function slugify(name) {
   return name
@@ -44,71 +18,79 @@ function slugify(name) {
     .replace(/^-+|-+$/g, "");
 }
 
-async function tmdbSearch({ name, year, type }) {
+async function fetchPosterUrl({ name, year, type }) {
   const endpoint =
     type === "series"
       ? "https://api.themoviedb.org/3/search/tv"
       : "https://api.themoviedb.org/3/search/movie";
 
-  const params = new URLSearchParams({
-    api_key: TMDB_API_KEY,
-    query: name,
-    include_adult: "false",
-    language: "pt-PT",
-  });
+  const url = new URL(endpoint);
+  url.searchParams.set("api_key", TMDB_API_KEY);
+  url.searchParams.set("query", name);
 
-  // movie: year, tv: first_air_date_year
-  if (type === "movie") params.set("year", String(year));
-  if (type === "series") params.set("first_air_date_year", String(year));
+  // Ajuda MUITO o TMDB a acertar
+  if (year && type === "movie") url.searchParams.set("year", String(year));
+  if (year && type === "series") url.searchParams.set("first_air_date_year", String(year));
 
-  const url = `${endpoint}?${params.toString()}`;
   const res = await fetch(url);
+  const json = await res.json();
 
-  if (!res.ok) return null;
+  const item = json?.results?.[0];
+  if (!item?.poster_path) return null;
 
-  const data = await res.json();
-  const first = data?.results?.[0];
-  const posterPath = first?.poster_path;
-
-  if (!posterPath) return null;
-
-  return `https://image.tmdb.org/t/p/w500${posterPath}`;
+  return `https://image.tmdb.org/t/p/w500${item.poster_path}`;
 }
 
-(async () => {
+async function main() {
+  const seedPath = path.join(process.cwd(), "src", "lib", "seed-titles.json");
+  const postersPath = path.join(process.cwd(), "src", "lib", "posters.json");
+
+  if (!fs.existsSync(seedPath)) {
+    console.error("✘ Não achei:", seedPath);
+    process.exit(1);
+  }
+
+  const seedTitles = JSON.parse(fs.readFileSync(seedPath, "utf-8"));
+
   let posters = {};
   if (fs.existsSync(postersPath)) {
-    try {
-      posters = JSON.parse(fs.readFileSync(postersPath, "utf8"));
-    } catch {
-      posters = {};
-    }
+    posters = JSON.parse(fs.readFileSync(postersPath, "utf-8"));
   }
 
-  let ok = 0;
-  let fail = 0;
+  let added = 0;
+  let missing = 0;
+  let skipped = 0;
 
-  for (const t of SEED_TITLES) {
+  for (const t of seedTitles) {
     const slug = slugify(t.name);
 
-    // se já existe, não refaz
-    if (posters[slug]) continue;
+    if (posters[slug]) {
+      skipped++;
+      continue;
+    }
 
-    const url = await tmdbSearch(t);
-    if (url) {
-      posters[slug] = url;
-      ok++;
-      console.log(`✅ ${slug} -> OK`);
+    const posterUrl = await fetchPosterUrl(t);
+
+    if (posterUrl) {
+      posters[slug] = posterUrl;
+      added++;
+      console.log("✓", slug);
     } else {
-      fail++;
-      console.log(`⚠️ ${slug} -> sem poster`);
+      missing++;
+      console.log("– sem poster:", slug);
     }
   }
 
-  fs.writeFileSync(postersPath, JSON.stringify(posters, null, 2), "utf8");
+  fs.writeFileSync(postersPath, JSON.stringify(posters, null, 2), "utf-8");
 
   console.log("\n=== FEITO ===");
-  console.log("Capas novas:", ok);
-  console.log("Sem capa:", fail);
+  console.log("Capas novas:", added);
+  console.log("Já existiam:", skipped);
+  console.log("Sem capa:", missing);
   console.log("Arquivo atualizado:", postersPath);
-})();
+}
+
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
