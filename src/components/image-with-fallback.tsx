@@ -1,10 +1,9 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-type Props = Omit<ImageProps, "src"> & {
-  src: string;
+type Props = ImageProps & {
   fallbackSrc?: string;
 };
 
@@ -14,19 +13,16 @@ export default function ImageWithFallback({
   alt,
   ...props
 }: Props) {
-  const [currentSrc, setCurrentSrc] = useState(src);
-
-  // Atualiza quando o src mudar (quando o posterUrl chegar)
-  useEffect(() => {
-    setCurrentSrc(src);
-  }, [src]);
+  const [imgSrc, setImgSrc] = useState(src);
 
   return (
     <Image
-      {...props}
-      src={currentSrc}
+      
+    {...props}
       alt={alt}
-      onError={() => setCurrentSrc(fallbackSrc)}
+      src={imgSrc}
+      unoptimized // ✅ força modo estático (GitHub Pages)
+      onError={() => setImgSrc(fallbackSrc)}
     />
   );
 }
