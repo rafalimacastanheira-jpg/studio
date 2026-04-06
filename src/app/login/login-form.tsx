@@ -37,10 +37,10 @@ export function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      login(values.email, values.password);
-      router.push('/profile');
+      await login(values.email, values.password);
+      router.push("/profile");
       toast({
         title: "Login bem-sucedido!",
         description: "Bem-vindo de volta.",
@@ -49,7 +49,7 @@ export function LoginForm() {
       toast({
         variant: "destructive",
         title: "Erro no login",
-        description: error.message,
+        description: error.message || "Não foi possível entrar.",
       });
     }
   }

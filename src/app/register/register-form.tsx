@@ -39,19 +39,19 @@ export function RegisterForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      register(values.name, values.email, values.password);
+      await register(values.name, values.email, values.password);
       toast({
         title: "Conta criada com sucesso!",
-        description: "Agora pode fazer login com as suas credenciais.",
+        description: "A sua conta foi criada.",
       });
-      router.push('/login');
+      router.push("/profile");
     } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Erro no registo",
-        description: error.message,
+        description: error.message || "Não foi possível criar a conta.",
       });
     }
   }
