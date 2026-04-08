@@ -11,7 +11,7 @@ export type Title = {
 };
 
 export type User = {
-  id: number;
+  id: string;
   name: string;
   email: string;
 };
@@ -21,16 +21,16 @@ export type FullUser = User & {
 };
 
 export type Rating = {
-  userId: number;
+  userId: string;
   titleId: number;
   score: number;
   ts: string;
 };
 
 export type Comment = {
-  id: number;
+  id: string;
   titleId: number;
-  userId: number;
+  userId: string;
   userName: string;
   text: string;
   ts: string;
