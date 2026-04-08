@@ -74,7 +74,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {
-    await signInWithEmailAndPassword(auth, email, password);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error("AUTH CONTEXT LOGIN ERROR:", error);
+      throw error;
+    }
   };
 
   const register = async (
@@ -82,26 +87,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     email: string,
     password: string
   ): Promise<void> => {
-    if (!name || !email || password.length < 6) {
-      throw new Error("Dados inválidos. A password deve ter pelo menos 6 caracteres.");
+    try {
+      if (!name || !email || password.length < 6) {
+        throw new Error("Dados inválidos. A password deve ter pelo menos 6 caracteres.");
+      }
+
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+
+      await updateProfile(cred.user, { displayName: name });
+
+      await setDoc(doc(db, "users", cred.user.uid), {
+        uid: cred.user.uid,
+        name,
+        email,
+        createdAt: serverTimestamp(),
+      });
+
+      setUser({
+        id: cred.user.uid,
+        name,
+        email,
+      });
+    } catch (error) {
+      console.error("AUTH CONTEXT REGISTER ERROR:", error);
+      throw error;
     }
-
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-
-    await updateProfile(cred.user, { displayName: name });
-
-    await setDoc(doc(db, "users", cred.user.uid), {
-      uid: cred.user.uid,
-      name,
-      email,
-      createdAt: serverTimestamp(),
-    });
-
-    setUser({
-      id: cred.user.uid,
-      name,
-      email,
-    });
   };
 
   const logout = async (): Promise<void> => {

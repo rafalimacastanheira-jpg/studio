@@ -46,10 +46,13 @@ export function LoginForm() {
         description: "Bem-vindo de volta.",
       });
     } catch (error: any) {
+      console.error("ERRO FIREBASE LOGIN:", error);
       toast({
         variant: "destructive",
         title: "Erro no login",
-        description: error.message || "Não foi possível entrar.",
+        description: error?.code
+          ? `${error.code} - ${error.message}`
+          : error.message || "Não foi possível entrar.",
       });
     }
   }

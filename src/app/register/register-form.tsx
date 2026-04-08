@@ -48,10 +48,13 @@ export function RegisterForm() {
       });
       router.push("/profile");
     } catch (error: any) {
+      console.error("ERRO FIREBASE REGISTER:", error);
       toast({
         variant: "destructive",
         title: "Erro no registo",
-        description: error.message || "Não foi possível criar a conta.",
+        description: error?.code
+          ? `${error.code} - ${error.message}`
+          : error.message || "Não foi possível criar a conta.",
       });
     }
   }
