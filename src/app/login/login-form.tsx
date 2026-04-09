@@ -40,11 +40,14 @@ export function LoginForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await login(values.email, values.password);
-      router.push("/profile");
+  
       toast({
         title: "Login bem-sucedido!",
         description: "Bem-vindo de volta.",
       });
+  
+      router.push("/profile");
+      router.refresh();
     } catch (error: any) {
       console.error("ERRO FIREBASE LOGIN:", error);
       toast({

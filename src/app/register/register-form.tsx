@@ -42,11 +42,14 @@ export function RegisterForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await register(values.name, values.email, values.password);
+  
       toast({
         title: "Conta criada com sucesso!",
         description: "A sua conta foi criada.",
       });
+  
       router.push("/profile");
+      router.refresh();
     } catch (error: any) {
       console.error("ERRO FIREBASE REGISTER:", error);
       toast({

@@ -34,15 +34,29 @@ async function buildAppUser(firebaseUser: FirebaseUser): Promise<AppUser> {
   const ref = doc(db, "users", firebaseUser.uid);
   const snap = await getDoc(ref);
 
-  const firestoreName =
-    snap.exists() && typeof snap.data().name === "string"
-      ? snap.data().name
-      : firebaseUser.displayName || "";
+  if (!snap.exists()) {
+    const userData = {
+      uid: firebaseUser.uid,
+      name: firebaseUser.displayName || "",
+      email: firebaseUser.email || "",
+      createdAt: serverTimestamp(),
+    };
+
+    await setDoc(ref, userData);
+
+    return {
+      id: firebaseUser.uid,
+      name: userData.name,
+      email: userData.email,
+    };
+  }
+
+  const data = snap.data();
 
   return {
     id: firebaseUser.uid,
-    name: firestoreName,
-    email: firebaseUser.email || "",
+    name: typeof data.name === "string" ? data.name : firebaseUser.displayName || "",
+    email: typeof data.email === "string" ? data.email : firebaseUser.email || "",
   };
 }
 
