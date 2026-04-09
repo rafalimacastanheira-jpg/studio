@@ -1,33 +1,48 @@
 "use client";
 
-import { useCallback } from 'react';
-import useLocalStorage from './use-local-storage';
-import type { Comment } from '@/lib/definitions';
+import { useMemo, useCallback } from "react";
+import useLocalStorage from "./use-local-storage";
+import type { Comment } from "@/lib/definitions";
 
 export function useComments() {
-  const [comments, setComments] = useLocalStorage<Comment[]>('comments', []);
+  const [comments, setComments] = useLocalStorage<Comment[]>("comments", []);
 
-  const getCommentsForTitle = useCallback((titleId: number) => {
-    return comments.filter(c => c.titleId === titleId)
-      .sort((a, b) => new Date(b.ts).getTime() - new Date(a.ts).getTime());
-  }, [comments]);
-  
-  const addComment = useCallback((titleId: number, userId: number, userName: string, text: string) => {
-    if (text.trim().length < 2) {
-      throw new Error('O comentário é muito curto.');
-    }
-    setComments(prevComments => {
+  const getCommentsForTitle = useCallback(
+    (titleId: number) => {
+      return comments
+        .filter((c) => c.titleId === titleId)
+        .sort((a, b) => new Date(b.ts).getTime() - new Date(a.ts).getTime());
+    },
+    [comments]
+  );
+
+  const addComment = useCallback(
+    (titleId: number, userId: string, userName: string, text: string) => {
       const newComment: Comment = {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         titleId,
         userId,
         userName,
         text,
         ts: new Date().toISOString(),
       };
-      return [newComment, ...prevComments];
-    });
-  }, [setComments]);
 
-  return { comments, getCommentsForTitle, addComment };
+      setComments((prev) => [...prev, newComment]);
+    },
+    [setComments]
+  );
+
+  const commentsByUser = useMemo(() => {
+    return (userId: string) =>
+      comments
+        .filter((c) => c.userId === userId)
+        .sort((a, b) => new Date(b.ts).getTime() - new Date(a.ts).getTime());
+  }, [comments]);
+
+  return {
+    comments,
+    getCommentsForTitle,
+    addComment,
+    commentsByUser,
+  };
 }
