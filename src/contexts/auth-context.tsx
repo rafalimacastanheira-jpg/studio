@@ -9,6 +9,8 @@ import {
   signOut,
   updateProfile,
   type User as FirebaseUser,
+  setPersistence,
+  browserLocalPersistence,
 } from "firebase/auth";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 
@@ -30,33 +32,26 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-async function buildAppUser(firebaseUser: FirebaseUser): Promise<AppUser> {
+async function ensureUserDoc(firebaseUser: FirebaseUser): Promise<AppUser> {
   const ref = doc(db, "users", firebaseUser.uid);
   const snap = await getDoc(ref);
 
+  const name = firebaseUser.displayName || "";
+  const email = firebaseUser.email || "";
+
   if (!snap.exists()) {
-    const userData = {
+    await setDoc(ref, {
       uid: firebaseUser.uid,
-      name: firebaseUser.displayName || "",
-      email: firebaseUser.email || "",
+      name,
+      email,
       createdAt: serverTimestamp(),
-    };
-
-    await setDoc(ref, userData);
-
-    return {
-      id: firebaseUser.uid,
-      name: userData.name,
-      email: userData.email,
-    };
+    });
   }
-
-  const data = snap.data();
 
   return {
     id: firebaseUser.uid,
-    name: typeof data.name === "string" ? data.name : firebaseUser.displayName || "",
-    email: typeof data.email === "string" ? data.email : firebaseUser.email || "",
+    name,
+    email,
   };
 }
 
@@ -66,30 +61,57 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
-      try {
-        if (!firebaseUser) {
-          setUser(null);
-          setLoading(false);
-          return;
-        }
+    let mounted = true;
 
-        const appUser = await buildAppUser(firebaseUser);
-        setUser(appUser);
+    const init = async () => {
+      try {
+        await setPersistence(auth, browserLocalPersistence);
       } catch (error) {
-        console.error("Erro ao carregar utilizador autenticado:", error);
-        setUser(null);
-      } finally {
-        setLoading(false);
+        console.error("Erro ao definir persistência:", error);
       }
+
+      const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
+        try {
+          if (!mounted) return;
+
+          if (!firebaseUser) {
+            setUser(null);
+            setLoading(false);
+            return;
+          }
+
+          const appUser = await ensureUserDoc(firebaseUser);
+
+          if (!mounted) return;
+          setUser(appUser);
+        } catch (error) {
+          console.error("Erro ao carregar utilizador autenticado:", error);
+          if (mounted) setUser(null);
+        } finally {
+          if (mounted) setLoading(false);
+        }
+      });
+
+      return unsub;
+    };
+
+    let unsubscribe: (() => void) | undefined;
+
+    init().then((unsub) => {
+      unsubscribe = unsub;
     });
 
-    return () => unsub();
+    return () => {
+      mounted = false;
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      const appUser = await ensureUserDoc(cred.user);
+      setUser(appUser);
     } catch (error) {
       console.error("AUTH CONTEXT LOGIN ERROR:", error);
       throw error;

@@ -48,8 +48,7 @@ export function RegisterForm() {
         description: "A sua conta foi criada.",
       });
   
-      router.push("/profile");
-      router.refresh();
+      window.location.href = "/studio/profile/";
     } catch (error: any) {
       console.error("ERRO FIREBASE REGISTER:", error);
       toast({

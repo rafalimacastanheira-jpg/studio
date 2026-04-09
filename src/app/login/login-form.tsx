@@ -46,8 +46,7 @@ export function LoginForm() {
         description: "Bem-vindo de volta.",
       });
   
-      router.push("/profile");
-      router.refresh();
+      window.location.href = "/studio/profile/";
     } catch (error: any) {
       console.error("ERRO FIREBASE LOGIN:", error);
       toast({
