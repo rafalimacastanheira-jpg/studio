@@ -1,12 +1,11 @@
 "use client";
 
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -14,40 +13,40 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useAuth } from '@/contexts/auth-context';
-import { useToast } from '@/hooks/use-toast';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useAuth } from "@/contexts/auth-context";
+import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: 'O nome deve ter pelo menos 2 caracteres.' }),
-  email: z.string().email({ message: 'Por favor, insira um email válido.' }),
-  password: z.string().min(6, { message: 'A password deve ter pelo menos 6 caracteres.' }),
+  name: z.string().min(2, { message: "O nome deve ter pelo menos 2 caracteres." }),
+  email: z.string().email({ message: "Por favor, insira um email válido." }),
+  password: z.string().min(6, { message: "A password deve ter pelo menos 6 caracteres." }),
 });
 
 export function RegisterForm() {
   const { register } = useAuth();
-  const router = useRouter();
+
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      email: '',
-      password: '',
+      name: "",
+      email: "",
+      password: "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       await register(values.name, values.email, values.password);
-  
+
       toast({
         title: "Conta criada com sucesso!",
         description: "A sua conta foi criada.",
       });
-  
+
       window.location.href = "/studio/profile/";
     } catch (error: any) {
       console.error("ERRO FIREBASE REGISTER:", error);
@@ -77,6 +76,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="email"
@@ -90,6 +90,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="password"
@@ -103,9 +104,13 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full font-bold">Criar conta</Button>
+
+        <Button type="submit" className="w-full font-bold">
+          Criar conta
+        </Button>
+
         <p className="text-center text-sm text-muted-foreground">
-          Já tem conta?{' '}
+          Já tem conta?{" "}
           <Link href="/login" className="font-semibold text-primary hover:underline">
             Entrar
           </Link>

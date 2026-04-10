@@ -9,8 +9,7 @@ import {
   signOut,
   updateProfile,
   type User as FirebaseUser,
-  setPersistence,
-  browserLocalPersistence,
+
 } from "firebase/auth";
 import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 
@@ -61,50 +60,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   useEffect(() => {
-    let mounted = true;
-
-    const init = async () => {
+    const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       try {
-        await setPersistence(auth, browserLocalPersistence);
-      } catch (error) {
-        console.error("Erro ao definir persistência:", error);
-      }
-
-      const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
-        try {
-          if (!mounted) return;
-
-          if (!firebaseUser) {
-            setUser(null);
-            setLoading(false);
-            return;
-          }
-
-          const appUser = await ensureUserDoc(firebaseUser);
-
-          if (!mounted) return;
-          setUser(appUser);
-        } catch (error) {
-          console.error("Erro ao carregar utilizador autenticado:", error);
-          if (mounted) setUser(null);
-        } finally {
-          if (mounted) setLoading(false);
+        if (!firebaseUser) {
+          setUser(null);
+          setLoading(false);
+          return;
         }
-      });
 
-      return unsub;
-    };
-
-    let unsubscribe: (() => void) | undefined;
-
-    init().then((unsub) => {
-      unsubscribe = unsub;
+        const appUser = await ensureUserDoc(firebaseUser);
+        setUser(appUser);
+      } catch (error) {
+        console.error("Erro ao carregar utilizador autenticado:", error);
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
     });
 
-    return () => {
-      mounted = false;
-      if (unsubscribe) unsubscribe();
-    };
+    return () => unsub();
   }, []);
 
   const login = async (email: string, password: string): Promise<void> => {
