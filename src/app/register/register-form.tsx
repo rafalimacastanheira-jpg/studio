@@ -106,7 +106,7 @@ export function RegisterForm() {
         />
 
         <Button type="submit" className="w-full font-bold">
-        RAFAEL
+        Criar Conta
         </Button>
 
         <p className="text-center text-sm text-muted-foreground">
