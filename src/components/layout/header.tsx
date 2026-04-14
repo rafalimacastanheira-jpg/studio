@@ -67,9 +67,16 @@ export function Header() {
         </form>
         
         <nav className="hidden md:flex flex-1 items-center justify-center gap-4 text-sm font-medium text-muted-foreground">
-          <Link href="/" className="transition-colors hover:text-foreground">Home</Link>
-          <Link href="/search" className="transition-colors hover:text-foreground">Pesquisa</Link>
-        </nav>
+  <Link href="/" className="transition-colors hover:text-foreground">
+    Home
+  </Link>
+  <Link href="/browse" className="transition-colors hover:text-foreground">
+    Explorar
+  </Link>
+  <Link href="/search" className="transition-colors hover:text-foreground">
+    Pesquisa
+  </Link>
+</nav>
 
         <div className="flex items-center gap-2">
           {user ? (
