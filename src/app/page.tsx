@@ -1,134 +1,123 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+
 import Link from "next/link";
-import MovieCard from "@/components/movie-card";
 import { TITLES_DATA } from "@/lib/data";
+import MovieCard from "@/components/movie-card";
+
 import { Button } from "@/components/ui/button";
+import ImageWithFallback from "@/components/image-with-fallback";
 
 export default function Home() {
-  const featuredTitles = useMemo(() => TITLES_DATA.slice(0, 5), []);
-  const topMovies = useMemo(
-    () => TITLES_DATA.filter((item) => item.type === "movie").slice(0, 6),
-    []
-  );
-  const topSeries = useMemo(
-    () => TITLES_DATA.filter((item) => item.type === "series").slice(0, 6),
-    []
-  );
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (featuredTitles.length === 0) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % featuredTitles.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [featuredTitles]);
-
-  const featured = featuredTitles[currentIndex];
+  const featuredMovies = TITLES_DATA.filter((item) => item.type === "movie").slice(0, 6);
+  const featuredSeries = TITLES_DATA.filter((item) => item.type === "series").slice(0, 6);
+  const heroTitle = TITLES_DATA.find((item) => item.slug === "interstellar") || TITLES_DATA[0];
 
   return (
     <div className="space-y-14">
-      {featured && (
-        <section className="relative overflow-hidden rounded-2xl border bg-card">
-          <div className="grid gap-8 p-6 md:grid-cols-2 md:p-10">
-            <div className="flex flex-col justify-center space-y-5">
-              <span className="w-fit rounded-full bg-primary/15 px-3 py-1 text-sm font-medium text-primary">
-                Destaque da semana
-              </span>
+      <section className="relative overflow-hidden rounded-3xl border bg-card/40">
+        <div className="grid gap-8 lg:grid-cols-[1.2fr_420px] p-8 md:p-10">
+          <div className="flex flex-col justify-center space-y-6">
+            <div className="space-y-3">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+                HelpFlix
+              </p>
 
-              <h1 className="font-headline text-4xl font-bold md:text-5xl">
-                {featured.name}
+              <h1 className="font-headline text-4xl font-bold leading-tight md:text-6xl">
+                Descobre, avalia e comenta os melhores filmes e séries
               </h1>
 
-              <p className="text-muted-foreground">
-                {featured.type === "movie" ? "Filme" : "Série"} • {featured.year}
+              <p className="max-w-2xl text-base text-muted-foreground md:text-lg">
+                Uma plataforma inspirada no IMDb para explorares títulos,
+                veres trailers, leres comentários, dares notas e encontrares
+                o teu próximo filme ou série favorita.
               </p>
-              <p className="line-clamp-4 text-base text-muted-foreground">
-                {featured.synopsis}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {featured.genres.map((genre) => (
-                  <span
-                    key={genre}
-                    className="rounded-full bg-secondary px-3 py-1 text-sm"
-                  >
-                    {genre}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Button asChild>
-                  <Link href={`/title/${featured.slug}`}>Ver detalhes</Link>
-                </Button>
-
-                <Button asChild variant="secondary">
-                  <Link href="/browse">Explorar catálogo</Link>
-                </Button>
-              </div>
-
-              <div className="flex gap-2 pt-2">
-                {featuredTitles.map((item, index) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2.5 w-2.5 rounded-full transition ${
-                      currentIndex === index
-                        ? "bg-primary"
-                        : "bg-muted-foreground/30"
-                    }`}
-                    aria-label={`Ir para destaque ${index + 1}`}
-                  />
-                ))}
-              </div>
             </div>
 
-            <div className="flex items-center justify-center">
-              <img
-                src={featured.posterUrl}
-                alt={`Poster de ${featured.name}`}
-                className="h-auto max-h-[520px] w-full max-w-sm rounded-2xl object-cover shadow-xl"
+            <div className="flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link href="/browse">Explorar catálogo</Link>
+              </Button>
+
+              <Button asChild variant="secondary" size="lg">
+                <Link href={`/title/${heroTitle.slug}`}>Ver destaque</Link>
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap gap-2 pt-2 text-sm text-muted-foreground">
+              <span className="rounded-full bg-secondary px-3 py-1">Trailers</span>
+              <span className="rounded-full bg-secondary px-3 py-1">Comentários</span>
+              <span className="rounded-full bg-secondary px-3 py-1">Avaliações</span>
+              <span className="rounded-full bg-secondary px-3 py-1">Filmes e séries</span>
+            </div>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-[420px]">
+            <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border shadow-2xl">
+              <ImageWithFallback
+                src={heroTitle.posterUrl}
+                alt={heroTitle.name}
+                fill
+                className="object-cover"
+                priority
               />
             </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="font-headline text-2xl font-bold">Filmes em destaque</h2>
-          <Link href="/browse" className="text-sm text-primary hover:underline">
+      <section className="space-y-6">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="font-headline text-3xl font-bold">Filmes em destaque</h2>
+          <Link href="/browse" className="text-sm font-semibold text-primary hover:underline">
             Ver mais
           </Link>
         </div>
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          {topMovies.map((title) => (
+          {featuredMovies.map((title) => (
             <MovieCard key={title.id} title={title} />
           ))}
         </div>
       </section>
 
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="font-headline text-2xl font-bold">Séries em destaque</h2>
-          <Link href="/browse" className="text-sm text-primary hover:underline">
+      <section className="space-y-6">
+        <div className="flex items-center justify-between gap-4">
+          <h2 className="font-headline text-3xl font-bold">Séries em destaque</h2>
+          <Link href="/browse" className="text-sm font-semibold text-primary hover:underline">
             Ver mais
           </Link>
         </div>
+
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-          {topSeries.map((title) => (
+          {featuredSeries.map((title) => (
             <MovieCard key={title.id} title={title} />
           ))}
         </div>
       </section>
- 
+
+      <section className="grid gap-4 md:grid-cols-3">
+        <div className="rounded-2xl border bg-card/50 p-6">
+          <h3 className="mb-2 text-xl font-bold">Explora por género</h3>
+          <p className="text-sm text-muted-foreground">
+            Encontra filmes e séries por drama, ação, comédia, romance e muito mais.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border bg-card/50 p-6">
+          <h3 className="mb-2 text-xl font-bold">Avalia os títulos</h3>
+          <p className="text-sm text-muted-foreground">
+            Dá notas aos teus filmes e séries preferidos e acompanha as avaliações.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border bg-card/50 p-6">
+          <h3 className="mb-2 text-xl font-bold">Partilha opiniões</h3>
+          <p className="text-sm text-muted-foreground">
+            Comenta cada título e vê o que outros utilizadores acharam.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
