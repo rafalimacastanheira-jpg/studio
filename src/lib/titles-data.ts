@@ -84,6 +84,13 @@ function getTrailerBySlug(slug: string): string {
     "pulp-fiction": "https://www.youtube.com/embed/s7EdQ4FqbhY",
     "forrest-gump": "https://www.youtube.com/embed/bLvqoHBptjg",
     "the-godfather": "https://www.youtube.com/embed/UaVTIH8mujA",
+
+    "breaking-bad": "https://www.youtube.com/embed/HhesaQXLuRY",
+    "better-call-saul": "https://www.youtube.com/embed/HN4oydykJFc",
+    "game-of-thrones": "https://www.youtube.com/embed/KPLWWIOCOOQ",
+    "stranger-things": "https://www.youtube.com/embed/b9EkMc79ZSU",
+    "the-crown": "https://www.youtube.com/embed/JWtnJjn6ng0",
+    "chernobyl": "https://www.youtube.com/embed/s9APLXM9Ei8",
   };
 
   return trailerMap[slug] ?? fallbackTrailer;
