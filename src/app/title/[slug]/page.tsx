@@ -16,43 +16,48 @@ export default async function Page({ params }: PageProps) {
   const { slug } = await params;
 
   const title = TITLES_DATA.find((t) => t.slug === slug);
+
   if (!title) notFound();
 
   const posterUrl =
     title.posterUrl || "https://placehold.co/500x750?text=Sem+Capa";
 
   return (
-    <div className="space-y-8">
-      <article className="grid md:grid-cols-[280px_1fr] gap-8">
-        <div className="w-full md:w-[280px]">
-          <div className="aspect-[2/3] relative rounded-lg overflow-hidden shadow-2xl shadow-black/50 border border-border">
+    <div className="space-y-12">
+
+      <article className="grid gap-8 lg:grid-cols-[320px_1fr]">
+
+        <div className="w-full max-w-[320px]">
+          <div className="relative aspect-[2/3] overflow-hidden rounded-2xl border shadow-2xl">
             <ImageWithFallback
               src={posterUrl}
               alt={`Poster de ${title.name}`}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, 280px"
+
               priority
+              sizes="(max-width: 768px) 100vw, 320px"
             />
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="space-y-6">
+
           <div className="space-y-2">
-            <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+            <p className="text-sm font-semibold uppercase tracking-widest text-primary">
               {title.type === "movie" ? "Filme" : "Série"}
             </p>
 
-            <h1 className="font-headline text-4xl font-bold">
-              {title.name}{" "}
-              <span className="text-muted-foreground font-light">
+            <h1 className="font-headline text-4xl font-bold md:text-5xl">
+              {title.name}
+              <span className="ml-3 text-muted-foreground font-light">
                 ({title.year})
               </span>
             </h1>
           </div>
 
           <div className="flex flex-wrap gap-2">
-            {title.genres?.map((genre) => (
+            {title.genres.map((genre) => (
               <Badge key={genre} variant="secondary">
                 {genre}
               </Badge>
@@ -61,16 +66,68 @@ export default async function Page({ params }: PageProps) {
 
           <RatingSection titleId={title.id} />
 
-          <div>
-            <h2 className="font-headline text-xl font-bold mb-2">Sinopse</h2>
-            <p className="text-muted-foreground leading-relaxed">
+          <section className="space-y-2">
+            <h2 className="font-headline text-2xl font-bold">
+              Sinopse
+            </h2>
+
+            <p className="leading-relaxed text-muted-foreground">
               {title.synopsis}
             </p>
-          </div>
+          </section>
+
         </div>
       </article>
 
+      {title.trailerUrl && (
+        <section className="space-y-4">
+          <h2 className="font-headline text-2xl font-bold">
+            Trailer
+          </h2>
+
+          <div className="overflow-hidden rounded-2xl border bg-card">
+            <div className="aspect-video w-full">
+              <iframe
+                src={title.trailerUrl}
+                title={`Trailer de ${title.name}`}
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {title.cast?.length > 0 && (
+        <section className="space-y-4">
+          <h2 className="font-headline text-2xl font-bold">
+            Elenco
+          </h2>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {title.cast.map((actor) => (
+              <div
+                key={actor.name}
+                className="rounded-xl border bg-card/50 p-4"
+              >
+                <p className="font-semibold text-lg">
+                  {actor.name}
+                </p>
+
+                {actor.role && (
+                  <p className="text-sm text-muted-foreground">
+                    {actor.role}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       <CommentsSection titleId={title.id} />
+
     </div>
   );
 }
