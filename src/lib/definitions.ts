@@ -1,13 +1,20 @@
+export type CastMember = {
+  name: string;
+  role?: string;
+};
 
 export type Title = {
   id: number;
   slug: string;
-  type: 'movie' | 'series';
+  type: "movie" | "series";
   name: string;
   year: number;
   synopsis: string;
   posterUrl: string;
   genres: string[];
+  trailerUrl: string;
+  cast: CastMember[];
+  featured: boolean;
 };
 
 export type User = {
